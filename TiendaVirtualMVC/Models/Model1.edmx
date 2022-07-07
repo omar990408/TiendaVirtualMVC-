@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MiTiendaMVC5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MiTiendaMVC5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -246,72 +246,38 @@
             <End Role="PedidosItems" EntitySet="PedidosItems" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MiTiendaMVC5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TiendaContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="MiTiendaMVC5Model.C__MigrationHistory" />
-          <EntitySet Name="AspNetRoles" EntityType="MiTiendaMVC5Model.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="MiTiendaMVC5Model.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="MiTiendaMVC5Model.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="MiTiendaMVC5Model.AspNetUser" />
-          <EntitySet Name="Clientes" EntityType="MiTiendaMVC5Model.Cliente" />
-          <EntitySet Name="Pedidos" EntityType="MiTiendaMVC5Model.Pedido" />
-          <EntitySet Name="PedidosItems" EntityType="MiTiendaMVC5Model.PedidosItem" />
-          <EntitySet Name="Productos" EntityType="MiTiendaMVC5Model.Producto" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="MiTiendaMVC5Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="MiTiendaMVC5Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pedidos_Clientes1" Association="MiTiendaMVC5Model.FK_Pedidos_Clientes1">
-            <End Role="Cliente" EntitySet="Clientes" />
-            <End Role="Pedido" EntitySet="Pedidos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PedidosItems_Pedidos" Association="MiTiendaMVC5Model.FK_PedidosItems_Pedidos">
-            <End Role="Pedido" EntitySet="Pedidos" />
-            <End Role="PedidosItem" EntitySet="PedidosItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PedidosItems_Productos" Association="MiTiendaMVC5Model.FK_PedidosItems_Productos">
-            <End Role="Producto" EntitySet="Productos" />
-            <End Role="PedidosItem" EntitySet="PedidosItems" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="MiTiendaMVC5Model.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUsers" Relationship="MiTiendaMVC5Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="MiTiendaMVC5Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -319,16 +285,16 @@
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="MiTiendaMVC5Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -339,10 +305,10 @@
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="MiTiendaMVC5Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="MiTiendaMVC5Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
-          <NavigationProperty Name="AspNetRoles" Relationship="MiTiendaMVC5Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -357,7 +323,7 @@
           <Property Name="Rif" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telefonos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Pedidos" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes1" FromRole="Cliente" ToRole="Pedido" />
+          <NavigationProperty Name="Pedidos" Relationship="Self.FK_Pedidos_Clientes1" FromRole="Clientes" ToRole="Pedidos" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -366,8 +332,8 @@
           <Property Name="PedidoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClienteID" Type="Int32" />
           <Property Name="FechaPedido" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cliente" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes1" FromRole="Pedido" ToRole="Cliente" />
-          <NavigationProperty Name="PedidosItems" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Pedidos" FromRole="Pedido" ToRole="PedidosItem" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Pedidos_Clientes1" FromRole="Pedidos" ToRole="Clientes" />
+          <NavigationProperty Name="PedidosItems" Relationship="Self.FK_PedidosItems_Pedidos" FromRole="Pedidos" ToRole="PedidosItems" />
         </EntityType>
         <EntityType Name="PedidosItem">
           <Key>
@@ -377,95 +343,130 @@
           <Property Name="PedidoID" Type="Int32" Nullable="false" />
           <Property Name="ProductoID" Type="Int32" Nullable="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Pedido" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Pedidos" FromRole="PedidosItem" ToRole="Pedido" />
-          <NavigationProperty Name="Producto" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Productos" FromRole="PedidosItem" ToRole="Producto" />
+          <NavigationProperty Name="Pedido" Relationship="Self.FK_PedidosItems_Pedidos" FromRole="PedidosItems" ToRole="Pedidos" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK_PedidosItems_Productos" FromRole="PedidosItems" ToRole="Productos" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
             <PropertyRef Name="ProductoID" />
           </Key>
           <Property Name="ProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreProducto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <Property Name="Imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Detalles" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PedidosItems" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Productos" FromRole="Producto" ToRole="PedidosItem" />
+          <Property Name="NombreProducto" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="PedidosItems" Relationship="Self.FK_PedidosItems_Productos" FromRole="Productos" ToRole="PedidosItems" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="MiTiendaMVC5Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUser">
+            <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserClaim">
+            <Dependent Role="AspNetUserClaims">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="MiTiendaMVC5Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUser">
+            <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserLogin">
+            <Dependent Role="AspNetUserLogins">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pedidos_Clientes1">
-          <End Type="MiTiendaMVC5Model.Cliente" Role="Cliente" Multiplicity="0..1">
+          <End Role="Clientes" Type="Self.Cliente" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="*" />
+          <End Role="Pedidos" Type="Self.Pedido" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Cliente">
+            <Principal Role="Clientes">
               <PropertyRef Name="ClienteID" />
             </Principal>
-            <Dependent Role="Pedido">
+            <Dependent Role="Pedidos">
               <PropertyRef Name="ClienteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Pedidos">
-          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="1">
+          <End Role="Pedidos" Type="Self.Pedido" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
+          <End Role="PedidosItems" Type="Self.PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pedido">
+            <Principal Role="Pedidos">
               <PropertyRef Name="PedidoID" />
             </Principal>
-            <Dependent Role="PedidosItem">
+            <Dependent Role="PedidosItems">
               <PropertyRef Name="PedidoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Productos">
-          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="1">
+          <End Role="Productos" Type="Self.Producto" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
+          <End Role="PedidosItems" Type="Self.PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Producto">
+            <Principal Role="Productos">
               <PropertyRef Name="ProductoID" />
             </Principal>
-            <Dependent Role="PedidosItem">
+            <Dependent Role="PedidosItems">
               <PropertyRef Name="ProductoID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Type="MiTiendaMVC5Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityContainer Name="TiendaContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+          <EntitySet Name="Pedidos" EntityType="Self.Pedido" />
+          <EntitySet Name="PedidosItems" EntityType="Self.PedidosItem" />
+          <EntitySet Name="Productos" EntityType="Self.Producto" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pedidos_Clientes1" Association="Self.FK_Pedidos_Clientes1">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosItems_Pedidos" Association="Self.FK_PedidosItems_Pedidos">
+            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="PedidosItems" EntitySet="PedidosItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosItems_Productos" Association="Self.FK_PedidosItems_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="PedidosItems" EntitySet="PedidosItems" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -475,110 +476,110 @@
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
                 <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Cliente">
               <MappingFragment StoreEntitySet="Clientes">
-                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Rif" ColumnName="Rif" />
-                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CodigoPostal" ColumnName="CodigoPostal" />
+                <ScalarProperty Name="Rif" ColumnName="Rif" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Telefonos" ColumnName="Telefonos" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pedidos">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Pedido">
               <MappingFragment StoreEntitySet="Pedidos">
-                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
                 <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PedidosItems">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.PedidosItem">
               <MappingFragment StoreEntitySet="PedidosItems">
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
-                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
                 <ScalarProperty Name="PedidoItemID" ColumnName="PedidoItemID" />
+                <ScalarProperty Name="PedidoID" ColumnName="PedidoID" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Producto">
               <MappingFragment StoreEntitySet="Productos">
-                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
-                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="MiTiendaMVC5Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
+            <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

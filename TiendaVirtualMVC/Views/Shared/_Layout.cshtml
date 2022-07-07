@@ -6,13 +6,59 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Mi Tienda Virtual 2022</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="@Url.Action("Index", "Home")">
+                                    Home
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Tienda")">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","Cliente")">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Producto")">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Pedido")">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "PedidosItem")">Pedidos Items</a>
+                    </li>
+                    @*
+                  <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle show" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Dropdown</a>
+                          <div class="dropdown-menu show" data-bs-popper="none">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                          </div>
+                        </li>
+                        *@
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-    <div id="header">
-        <h1>Mi tienda virtual 2022</h1>
-    </div>
+    @*
     <div id="main">
         <div style="width: 20%; float: left;">
             <h2>MENU</h2>
@@ -23,14 +69,12 @@
                 <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
                 <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
                 <li>@Html.ActionLink("Pedidos - Item", "Index", "PedidosItem")</li>
-                @*<li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>*@
-                @*<li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
-                <li>@Html.ActionLink("Registro", "Register", "Account")</li>*@
             </ul>
             @Html.Partial("_LoginPartial")
         </div>
     </div>
-    <div style="width: 80%; float: left;">
+        *@
+    <div style="width: 100%; float: left;">
         @RenderBody()
     </div>
 
