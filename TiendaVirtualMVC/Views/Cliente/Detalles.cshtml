@@ -1,0 +1,99 @@
+﻿@model TiendaVirtualMVC.Models.Cliente
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Codigo Pais-Postal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais_CodPostal)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.Estado_CodPostal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Estado_CodPostal)
+            </dd>*@
+
+        <dt>
+            Razon social
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RazonSocial)
+        </dd>
+
+        <dt>
+            Direccion
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            Ciudad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+
+        <dt>
+            Pichincha
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Codigo Postal
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoPostal)
+        </dd>
+
+        <dt>
+            Rif
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rif)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            Pais
+        </dd>
+
+        <dt>
+            Telefono
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefonos)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ClienteID }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

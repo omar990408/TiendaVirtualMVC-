@@ -1,0 +1,53 @@
+﻿@model TiendaVirtualMVC.Models.PedidosItem
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>PedidosItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            Pedido Item ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PedidoItemID)
+        </dd>*@
+
+        <dt>
+            Pedido
+        </dt>
+
+        <dd>
+            @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(Model.PedidoID))
+            @*@Html.DisplayFor(model => model.PedidoID)*@
+        </dd>
+
+        <dt>
+            Producto
+        </dt>
+
+        <dd>
+            @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(Model.ProductoID)
+            @*@Html.DisplayFor(model => model.ProductoID)*@
+        </dd>
+
+        <dt>
+            Cantidad
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Editar", new { id = Model.PedidoItemID }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

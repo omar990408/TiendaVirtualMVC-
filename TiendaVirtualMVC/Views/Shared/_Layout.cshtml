@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div id="header">
+        <h1>Mi tienda virtual 2022</h1>
+    </div>
+    <div id="main">
+        <div style="width: 20%; float: left;">
+            <h2>MENU</h2>
+            <ul class="nav">
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Tienda", "Index", "Tienda")</li>
+                <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
+                <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
+                <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
+                <li>@Html.ActionLink("Pedidos - Item", "Index", "PedidosItem")</li>
+                @*<li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>*@
+                @*<li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
+                <li>@Html.ActionLink("Registro", "Register", "Account")</li>*@
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div style="width: 80%; float: left;">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

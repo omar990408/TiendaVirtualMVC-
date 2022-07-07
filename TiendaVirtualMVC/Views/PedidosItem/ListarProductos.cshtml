@@ -1,0 +1,10 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.Producto>
+
+<select class="form-control" id="ProductoID" name="ProductoID">
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.ProductoID">@item.NombreProducto</option>
+
+    }
+</select>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Producto</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre del Producto
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th>
+            Precio
+        </th>
+        <th>
+            Imagen
+        </th>
+        <th>
+            Detalles
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imagen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalles)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ProductoID }, new { @class = "aEliminar" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(".aEliminar").click(function (event) {
+            if (!confirm('Estas seguro de eliminar?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}

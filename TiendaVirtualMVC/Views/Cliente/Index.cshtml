@@ -1,0 +1,93 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.Cliente>
+
+@{
+    ViewBag.Title = "Lista de Clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Razon Social
+        </th>
+        <th>
+            Direccion
+        </th>
+        <th>
+            Ciudad
+        </th>
+        <th>
+            Código
+        </th>
+        <th>
+            Provincia
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CodigoPostal)
+            </th>*@
+        <th>
+            RIF
+        </th>
+        @*<th>
+                Pais
+            </th>*@
+        <th>
+            Telefono Movil
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RazonSocial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais_CodPostal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CodigoPostal)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Rif)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Pais)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefonos)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ClienteID }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.ClienteID }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ClienteID }, new { @class = "aEliminar" })
+            </td>
+        </tr>
+    }
+
+</table>
+@section scripts
+{
+    <script>
+        $(".aEliminar").click(function (event) {
+            if (!confirm('Estas seguro de eliminar?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}

@@ -1,0 +1,10 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.Cliente>
+
+<select class="form-control" id="ClienteID" name="ClienteID">
+
+    @foreach (var item in Model)
+    {
+        <option value="@item.ClienteID">@item.RazonSocial</option>
+
+    }
+</select>

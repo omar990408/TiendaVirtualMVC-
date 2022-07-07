@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.PedidosItem>
+
+@{
+    ViewBag.Title = "Pedidos - Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pedidos - Item</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Agregar")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.PedidoItemID)
+            </th>*@
+        <th>
+            Pedido
+        </th>
+        <th>
+            Producto
+        </th>
+        <th>
+            Cantidad
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.PedidoItemID)
+                </td>*@
+            <td>
+                @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
+                @*@Html.DisplayFor(modelItem => item.PedidoID)*@
+            </td>
+            <td>
+                @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
+                @*@Html.DisplayFor(modelItem => item.ProductoID)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section scripts
+{
+    <script>
+        $(".aEliminar").click(function (event) {
+            if (!confirm('Estas seguro de eliminar?')) {
+                event.preventDefault();
+            }
+        });
+    </script>
+}
