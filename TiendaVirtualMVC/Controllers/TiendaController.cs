@@ -17,11 +17,10 @@ namespace TiendaVirtualMVC.Controllers
             return View();
         }
 
-      //  private ActionResult Index()
-      //  {
-      //      var UserList = (from a in db.AspNetUsers
-      //                      where a.user == GlobalVariables.Usuario
-      //                      select a).Firsto
-      //  }
+   //       private ActionResult Index()
+   //       {
+   //           var UserList = (from a in auth_db.AspNetUsers
+   //                           where a.UserName == GlobalVariables.Usuario
+   //                           select a);
     }
 }

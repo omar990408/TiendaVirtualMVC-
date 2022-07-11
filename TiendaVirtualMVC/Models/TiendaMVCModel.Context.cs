@@ -25,10 +25,6 @@ namespace TiendaVirtualMVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
-        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<PedidosItem> PedidosItems { get; set; }

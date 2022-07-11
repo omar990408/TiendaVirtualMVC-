@@ -1,0 +1,70 @@
+﻿
+
+<!-- NAVBAR PARTIAL LAYOUT -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+        <!-- brand -->
+        <a class="navbar-brand waves-effect" href="@Url.Action("Index","Home")" target="_blank">
+            <strong class="blue-text">Tienda Virtual MVC 5</strong>
+        </a>
+        <!-- collapse -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsupportedcontent"
+                aria-controls="navbarsupportedcontent" aria-expanded="false" aria-label="toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- links -->
+        <div class="collapse navbar-collapse" id="navbarsupportedcontent">
+            <!-- left -->
+            <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index","Tienda")">Tienda</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index","Carrito")">Carrito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index","Cliente")">Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index", "Producto")">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index", "Pedido")">Pedidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link waves-effect" href="@Url.Action("Index", "PedidosItem")">Pedidos Items</a>
+                    </li>
+            </ul>
+            <!-- right -->
+            <ul class="navbar-nav nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect">
+                        <span class="badge red z-depth-1 mr-1"> 1 </span>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="clearfix d-none d-sm-inline-block"> cart </span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://twitter.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+                       target="_blank">
+                        <i class="fab fa-github mr-2"></i>mdb github
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- NAVBAR -->

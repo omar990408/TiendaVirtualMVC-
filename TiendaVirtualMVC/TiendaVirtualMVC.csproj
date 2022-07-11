@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,12 +120,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -183,18 +183,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>TiendaMVCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>TiendaMVCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>TiendaMVCModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>TiendaMVCModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>TiendaMVCModel.tt</DependentUpon>
     </Compile>
@@ -216,6 +204,7 @@
     <Compile Include="Models\Proveedor.cs">
       <DependentUpon>TiendaMVCModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TiendaMVCModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -235,14 +224,83 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\addons\datatables-select.css" />
+    <Content Include="Content\css\addons\datatables-select.min.css" />
+    <Content Include="Content\css\addons\datatables.css" />
+    <Content Include="Content\css\addons\datatables.min.css" />
+    <Content Include="Content\css\addons\directives.css" />
+    <Content Include="Content\css\addons\directives.min.css" />
+    <Content Include="Content\css\addons\flag.css" />
+    <Content Include="Content\css\addons\flag.min.css" />
+    <Content Include="Content\css\addons\rating.css" />
+    <Content Include="Content\css\addons\rating.min.css" />
+    <Content Include="Content\css\addons\zmd.hierarchical-display.css" />
+    <Content Include="Content\css\addons\zmd.hierarchical-display.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\mdb.css" />
+    <Content Include="Content\css\mdb.lite.css" />
+    <Content Include="Content\css\mdb.lite.min.css" />
+    <Content Include="Content\css\mdb.min.css" />
+    <Content Include="Content\css\modules\animations-extended.css" />
+    <Content Include="Content\css\modules\animations-extended.min.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\img\flags.png" />
+    <Content Include="Content\img\lightbox\default-skin.png" />
+    <Content Include="Content\img\lightbox\default-skin.svg" />
+    <Content Include="Content\img\lightbox\preloader.gif" />
+    <Content Include="Content\img\overlays\01.png" />
+    <Content Include="Content\img\overlays\02.png" />
+    <Content Include="Content\img\overlays\03.png" />
+    <Content Include="Content\img\overlays\04.png" />
+    <Content Include="Content\img\overlays\05.png" />
+    <Content Include="Content\img\overlays\06.png" />
+    <Content Include="Content\img\overlays\07.png" />
+    <Content Include="Content\img\overlays\08.png" />
+    <Content Include="Content\img\overlays\09.png" />
+    <Content Include="Content\img\sample.jpg" />
+    <Content Include="Content\img\svg\arrow_left.svg" />
+    <Content Include="Content\img\svg\arrow_right.svg" />
+    <Content Include="Content\img\svg\flags.png" />
+    <Content Include="Content\js\addons\datatables-select.js" />
+    <Content Include="Content\js\addons\datatables-select.min.js" />
+    <Content Include="Content\js\addons\datatables.js" />
+    <Content Include="Content\js\addons\datatables.min.js" />
+    <Content Include="Content\js\addons\imagesloaded.pkgd.min.js" />
+    <Content Include="Content\js\addons\jquery.zmd.hierarchical-display.js" />
+    <Content Include="Content\js\addons\jquery.zmd.hierarchical-display.min.js" />
+    <Content Include="Content\js\addons\masonry.pkgd.min.js" />
+    <Content Include="Content\js\addons\progressBar.js" />
+    <Content Include="Content\js\addons\progressBar.min.js" />
+    <Content Include="Content\js\addons\rating.js" />
+    <Content Include="Content\js\addons\rating.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\jquery-3.4.1.min.js" />
+    <Content Include="Content\js\mdb.js" />
+    <Content Include="Content\js\mdb.min.js" />
+    <Content Include="Content\js\modules\bs-custom-file-input.js" />
+    <Content Include="Content\js\modules\chart.js" />
+    <Content Include="Content\js\modules\default-file-input.js" />
+    <Content Include="Content\js\modules\enhanced-modals.js" />
+    <Content Include="Content\js\modules\forms-free.js" />
+    <Content Include="Content\js\modules\jquery.easing.js" />
+    <Content Include="Content\js\modules\scrolling-navbar.js" />
+    <Content Include="Content\js\modules\treeview.js" />
+    <Content Include="Content\js\modules\velocity.js" />
+    <Content Include="Content\js\modules\velocity.min.js" />
+    <Content Include="Content\js\modules\waves.js" />
+    <Content Include="Content\js\modules\wow.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\lumen\bootstrap.css" />
+    <Content Include="Content\lumen\bootstrap.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Models\TiendaMVCModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TiendaMVCModel.edmx</DependentUpon>
@@ -253,8 +311,6 @@
       <DependentUpon>TiendaMVCModel.edmx</DependentUpon>
       <LastGenOutput>TiendaMVCModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\TiendaMVCModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TiendaMVCModel.Designer.cs</LastGenOutput>
@@ -262,17 +318,109 @@
     <Content Include="Models\TiendaMVCModel.edmx.diagram">
       <DependentUpon>TiendaMVCModel.edmx</DependentUpon>
     </Content>
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Content\font\roboto\Roboto-Bold.eot" />
+    <Content Include="Content\font\roboto\Roboto-Bold.ttf" />
+    <Content Include="Content\font\roboto\Roboto-Bold.woff" />
+    <Content Include="Content\font\roboto\Roboto-Bold.woff2" />
+    <Content Include="Content\font\roboto\Roboto-Light.eot" />
+    <Content Include="Content\font\roboto\Roboto-Light.ttf" />
+    <Content Include="Content\font\roboto\Roboto-Light.woff" />
+    <Content Include="Content\font\roboto\Roboto-Light.woff2" />
+    <Content Include="Content\font\roboto\Roboto-Medium.eot" />
+    <Content Include="Content\font\roboto\Roboto-Medium.ttf" />
+    <Content Include="Content\font\roboto\Roboto-Medium.woff" />
+    <Content Include="Content\font\roboto\Roboto-Medium.woff2" />
+    <Content Include="Content\font\roboto\Roboto-Regular.eot" />
+    <Content Include="Content\font\roboto\Roboto-Regular.ttf" />
+    <Content Include="Content\font\roboto\Roboto-Regular.woff" />
+    <Content Include="Content\font\roboto\Roboto-Regular.woff2" />
+    <Content Include="Content\font\roboto\Roboto-Thin.eot" />
+    <Content Include="Content\font\roboto\Roboto-Thin.ttf" />
+    <Content Include="Content\font\roboto\Roboto-Thin.woff" />
+    <Content Include="Content\font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Content\scss\addons\_datatables-select.scss" />
+    <Content Include="Content\scss\addons\_datatables.scss" />
+    <Content Include="Content\scss\addons\_directives.scss" />
+    <Content Include="Content\scss\addons\_flags.scss" />
+    <Content Include="Content\scss\addons\_hierarchical-display.scss" />
+    <Content Include="Content\scss\addons\_rating.scss" />
+    <Content Include="Content\scss\core\bootstrap\_functions.scss" />
+    <Content Include="Content\scss\core\bootstrap\_rfs.scss" />
+    <Content Include="Content\scss\core\bootstrap\_variables.scss" />
+    <Content Include="Content\scss\core\_colors.scss" />
+    <Content Include="Content\scss\core\_global.scss" />
+    <Content Include="Content\scss\core\_helpers.scss" />
+    <Content Include="Content\scss\core\_masks.scss" />
+    <Content Include="Content\scss\core\_mixins.scss" />
+    <Content Include="Content\scss\core\_typography.scss" />
+    <Content Include="Content\scss\core\_variables.scss" />
+    <Content Include="Content\scss\core\_waves.scss" />
+    <Content Include="Content\scss\free\modules\animations-extended\animations-extended.scss" />
+    <Content Include="Content\scss\free\modules\animations-extended\_module.scss" />
+    <Content Include="Content\scss\free\_animations-basic.scss" />
+    <Content Include="Content\scss\free\_badges.scss" />
+    <Content Include="Content\scss\free\_buttons.scss" />
+    <Content Include="Content\scss\free\_cards.scss" />
+    <Content Include="Content\scss\free\_carousels.scss" />
+    <Content Include="Content\scss\free\_depreciated.scss" />
+    <Content Include="Content\scss\free\_dropdowns.scss" />
+    <Content Include="Content\scss\free\_footers.scss" />
+    <Content Include="Content\scss\free\_forms.scss" />
+    <Content Include="Content\scss\free\_input-group.scss" />
+    <Content Include="Content\scss\free\_list-group.scss" />
+    <Content Include="Content\scss\free\_loader.scss" />
+    <Content Include="Content\scss\free\_modals.scss" />
+    <Content Include="Content\scss\free\_msc.scss" />
+    <Content Include="Content\scss\free\_navbars.scss" />
+    <Content Include="Content\scss\free\_pagination.scss" />
+    <Content Include="Content\scss\free\_steppers.scss" />
+    <Content Include="Content\scss\free\_switch.scss" />
+    <Content Include="Content\scss\free\_tables.scss" />
+    <Content Include="Content\scss\free\_treeview.scss" />
+    <Content Include="Content\scss\mdb.lite.scss" />
+    <Content Include="Content\scss\mdb.scss" />
+    <Content Include="Content\scss\style.scss" />
+    <Content Include="Content\scss\_custom-skin.scss" />
+    <Content Include="Content\scss\_custom-styles.scss" />
+    <Content Include="Content\scss\_custom-variables.scss" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\lumen\_bootswatch.scss" />
+    <Content Include="Content\lumen\_variables.scss" />
+    <None Include="Properties\PublishProfiles\TiendaVirtualMVC20220710221707 - Web Deploy.pubxml" />
+    <Content Include="Scripts\js\addons\datatables-select.js" />
+    <Content Include="Scripts\js\addons\datatables-select.min.js" />
+    <Content Include="Scripts\js\addons\datatables.js" />
+    <Content Include="Scripts\js\addons\datatables.min.js" />
+    <Content Include="Scripts\js\addons\imagesloaded.pkgd.min.js" />
+    <Content Include="Scripts\js\addons\jquery.zmd.hierarchical-display.js" />
+    <Content Include="Scripts\js\addons\jquery.zmd.hierarchical-display.min.js" />
+    <Content Include="Scripts\js\addons\masonry.pkgd.min.js" />
+    <Content Include="Scripts\js\addons\progressBar.js" />
+    <Content Include="Scripts\js\addons\progressBar.min.js" />
+    <Content Include="Scripts\js\addons\rating.js" />
+    <Content Include="Scripts\js\addons\rating.min.js" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\js\mdb.js" />
+    <Content Include="Scripts\js\mdb.min.js" />
+    <Content Include="Scripts\js\modules\bs-custom-file-input.js" />
+    <Content Include="Scripts\js\modules\chart.js" />
+    <Content Include="Scripts\js\modules\default-file-input.js" />
+    <Content Include="Scripts\js\modules\enhanced-modals.js" />
+    <Content Include="Scripts\js\modules\forms-free.js" />
+    <Content Include="Scripts\js\modules\jquery.easing.js" />
+    <Content Include="Scripts\js\modules\scrolling-navbar.js" />
+    <Content Include="Scripts\js\modules\treeview.js" />
+    <Content Include="Scripts\js\modules\velocity.js" />
+    <Content Include="Scripts\js\modules\velocity.min.js" />
+    <Content Include="Scripts\js\modules\waves.js" />
+    <Content Include="Scripts\js\modules\wow.js" />
+    <Content Include="Scripts\js\popper.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -309,7 +457,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Tienda\Index.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Cliente\Agregar.cshtml" />
@@ -330,6 +477,11 @@
     <Content Include="Views\Pedido\ListarClientes.cshtml" />
     <Content Include="Views\PedidosItem\ListarProductos.cshtml" />
     <Content Include="Views\PedidosItem\ListarPedidos.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Carousel.cshtml" />
+    <Content Include="Views\Shared\_Layoutlumen.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,13 +491,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
