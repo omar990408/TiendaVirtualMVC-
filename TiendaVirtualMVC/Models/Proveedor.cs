@@ -12,20 +12,21 @@ namespace TiendaVirtualMVC.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Pedido
+    public partial class Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pedido()
+        public Proveedor()
         {
-            this.PedidosItems = new HashSet<PedidosItem>();
+            this.Productos = new HashSet<Producto>();
         }
     
-        public int PedidoID { get; set; }
-        public int ClienteID { get; set; }
-        public System.DateTime FechaPedido { get; set; }
+        public int codigo_proveedor { get; set; }
+        public string nombre_proveedor { get; set; }
+        public string cuidad { get; set; }
+        public string estado { get; set; }
+        public string email { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidosItem> PedidosItems { get; set; }
+        public virtual ICollection<Producto> Productos { get; set; }
     }
 }

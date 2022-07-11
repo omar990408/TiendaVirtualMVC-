@@ -25,7 +25,6 @@ namespace TiendaVirtualMVC.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
@@ -34,5 +33,6 @@ namespace TiendaVirtualMVC.Models
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<PedidosItem> PedidosItems { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Proveedor> Proveedors { get; set; }
     }
 }
