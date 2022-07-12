@@ -34,5 +34,6 @@ namespace TiendaVirtualMVC.Models
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<PedidosItem> PedidosItems { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
+        public virtual DbSet<Proveedor> Proveedors { get; set; }
     }
 }

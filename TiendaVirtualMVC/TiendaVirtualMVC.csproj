@@ -177,6 +177,7 @@
     <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Controllers\PedidosItemController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -230,6 +231,10 @@
       <DependentUpon>ModelTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductoCE.cs" />
+    <Compile Include="Models\Proveedor.cs">
+      <DependentUpon>ModelTienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProveedorCE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -329,6 +334,10 @@
     <Content Include="Views\Pedido\ListarClientes.cshtml" />
     <Content Include="Views\PedidosItem\ListarProductos.cshtml" />
     <Content Include="Views\PedidosItem\ListarPedidos.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\Proveedor\Agregar.cshtml" />
+    <Content Include="Views\Proveedor\Editar.cshtml" />
+    <Content Include="Views\Proveedor\Detalles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

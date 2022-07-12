@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.Proveedor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Ingresar Proveedor", "Agregar")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Proveedor
+        </th>
+        <th>
+            Ciudad
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre_proveedor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ciudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.codigo_proveedor }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id=item.codigo_proveedor }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new {  id=item.codigo_proveedor })
+        </td>
+    </tr>
+}
+
+</table>

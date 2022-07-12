@@ -102,11 +102,22 @@
             <PropertyRef Name="ProductoID" />
           </Key>
           <Property Name="ProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreProducto" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NombreProducto" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Imagen" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Detalles" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="codigo_proveedor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="codigo_proveedor" />
+          </Key>
+          <Property Name="codigo_proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre_proveedor" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="ciudad" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -164,10 +175,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pedidos_Clientes1">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_Pedidos_Clientes">
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
           <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
@@ -179,9 +188,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Pedidos">
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
           <End Role="PedidosItems" Type="Self.PedidosItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pedidos">
@@ -193,9 +200,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
           <End Role="PedidosItems" Type="Self.PedidosItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Productos">
@@ -203,6 +208,18 @@
             </Principal>
             <Dependent Role="PedidosItems">
               <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="codigo_proveedor" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="codigo_proveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -217,6 +234,7 @@
           <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PedidosItems" EntityType="Self.PedidosItems" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -233,7 +251,7 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pedidos_Clientes1" Association="Self.FK_Pedidos_Clientes1">
+          <AssociationSet Name="FK_Pedidos_Clientes" Association="Self.FK_Pedidos_Clientes">
             <End Role="Clientes" EntitySet="Clientes" />
             <End Role="Pedidos" EntitySet="Pedidos" />
           </AssociationSet>
@@ -244,6 +262,10 @@
           <AssociationSet Name="FK_PedidosItems_Productos" Association="Self.FK_PedidosItems_Productos">
             <End Role="Productos" EntitySet="Productos" />
             <End Role="PedidosItems" EntitySet="PedidosItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Proveedor" Association="Self.FK_Productos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Productos" EntitySet="Productos" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -260,6 +282,7 @@
           <EntitySet Name="Pedidos" EntityType="MiTiendaMVC5Model.Pedido" />
           <EntitySet Name="PedidosItems" EntityType="MiTiendaMVC5Model.PedidosItem" />
           <EntitySet Name="Productos" EntityType="MiTiendaMVC5Model.Producto" />
+          <EntitySet Name="Proveedors" EntityType="MiTiendaMVC5Model.Proveedor" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="MiTiendaMVC5Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -268,7 +291,7 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pedidos_Clientes1" Association="MiTiendaMVC5Model.FK_Pedidos_Clientes1">
+          <AssociationSet Name="FK_Pedidos_Clientes" Association="MiTiendaMVC5Model.FK_Pedidos_Clientes">
             <End Role="Cliente" EntitySet="Clientes" />
             <End Role="Pedido" EntitySet="Pedidos" />
           </AssociationSet>
@@ -279,6 +302,10 @@
           <AssociationSet Name="FK_PedidosItems_Productos" Association="MiTiendaMVC5Model.FK_PedidosItems_Productos">
             <End Role="Producto" EntitySet="Productos" />
             <End Role="PedidosItem" EntitySet="PedidosItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Proveedor" Association="MiTiendaMVC5Model.FK_Productos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedors" />
+            <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="MiTiendaMVC5Model.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
@@ -357,7 +384,7 @@
           <Property Name="Rif" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telefonos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Pedidos" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes1" FromRole="Cliente" ToRole="Pedido" />
+          <NavigationProperty Name="Pedidos" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes" FromRole="Cliente" ToRole="Pedido" />
         </EntityType>
         <EntityType Name="Pedido">
           <Key>
@@ -366,7 +393,7 @@
           <Property Name="PedidoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClienteID" Type="Int32" />
           <Property Name="FechaPedido" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Cliente" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes1" FromRole="Pedido" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente" Relationship="MiTiendaMVC5Model.FK_Pedidos_Clientes" FromRole="Pedido" ToRole="Cliente" />
           <NavigationProperty Name="PedidosItems" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Pedidos" FromRole="Pedido" ToRole="PedidosItem" />
         </EntityType>
         <EntityType Name="PedidosItem">
@@ -385,12 +412,25 @@
             <PropertyRef Name="ProductoID" />
           </Key>
           <Property Name="ProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NombreProducto" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NombreProducto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
           <Property Name="Imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Detalles" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_proveedor" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PedidosItems" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Productos" FromRole="Producto" ToRole="PedidosItem" />
+          <NavigationProperty Name="Proveedor" Relationship="MiTiendaMVC5Model.FK_Productos_Proveedor" FromRole="Producto" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="codigo_proveedor" />
+          </Key>
+          <Property Name="codigo_proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre_proveedor" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="ciudad" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="estado" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Productos" Relationship="MiTiendaMVC5Model.FK_Productos_Proveedor" FromRole="Proveedor" ToRole="Producto" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
@@ -420,10 +460,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pedidos_Clientes1">
-          <End Type="MiTiendaMVC5Model.Cliente" Role="Cliente" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK_Pedidos_Clientes">
+          <End Type="MiTiendaMVC5Model.Cliente" Role="Cliente" Multiplicity="0..1" />
           <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
@@ -435,9 +473,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Pedidos">
-          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="1" />
           <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pedido">
@@ -449,9 +485,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Productos">
-          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="1" />
           <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
@@ -459,6 +493,18 @@
             </Principal>
             <Dependent Role="PedidosItem">
               <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Proveedor">
+          <End Type="MiTiendaMVC5Model.Proveedor" Role="Proveedor" Multiplicity="1" />
+          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="codigo_proveedor" />
+            </Principal>
+            <Dependent Role="Producto">
+              <PropertyRef Name="codigo_proveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -564,12 +610,24 @@
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Producto">
               <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="codigo_proveedor" ColumnName="codigo_proveedor" />
                 <ScalarProperty Name="Detalles" ColumnName="Detalles" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedors">
+            <EntityTypeMapping TypeName="MiTiendaMVC5Model.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="nombre_proveedor" ColumnName="nombre_proveedor" />
+                <ScalarProperty Name="codigo_proveedor" ColumnName="codigo_proveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
