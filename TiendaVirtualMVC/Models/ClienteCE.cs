@@ -47,10 +47,16 @@ namespace TiendaVirtualMVC.Models
         // RESULTADO = EC171503
         public string Convertir()
         {
-            var pais = Pais.Substring(0, 2);
-            pais = pais.ToUpper();
-            var codigoPostal = CodigoPostal;
-            return (pais + "" + codigoPostal);
+            if (CodigoPostal != null)
+            {
+                var pais = Pais.Substring(0, 2);
+                pais = pais.ToUpper();
+                var codigoPostal = CodigoPostal;
+                return (pais + "" + codigoPostal);
+            }
+            else
+                return "";
+
         }
     }
 

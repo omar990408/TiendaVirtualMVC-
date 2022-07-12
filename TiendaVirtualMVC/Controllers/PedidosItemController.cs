@@ -163,7 +163,7 @@ namespace TiendaVirtualMVC.Controllers
         {
             using(var db = new TiendaContext())
             {
-                return db.Pedidos.Find(pedidoID).ClienteID;
+                return (int)db.Pedidos.Find(pedidoID).ClienteID;
             }
         }
 

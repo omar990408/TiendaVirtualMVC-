@@ -23,15 +23,8 @@ namespace TiendaVirtualMVC
                       "~/Scripts/js/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/css/bootstrap.css",
-                      "~/Content/css/site.min.css",
-                      "~/Content/cass/site.css",
-                      "~/Content/css/mdb.min.css",
-                      "~/Content/css/font-awesome.css"
-
-                      
-                      )
-                      );
+                      "~/Content/css/style.css" ,
+                      "~/Content/css/style.scss" ));
         }
     }
 }

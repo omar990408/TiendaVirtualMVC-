@@ -21,8 +21,8 @@ namespace TiendaVirtualMVC.Models
         }
     
         public int PedidoID { get; set; }
-        public int ClienteID { get; set; }
-        public System.DateTime FechaPedido { get; set; }
+        public Nullable<int> ClienteID { get; set; }
+        public Nullable<System.DateTime> FechaPedido { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

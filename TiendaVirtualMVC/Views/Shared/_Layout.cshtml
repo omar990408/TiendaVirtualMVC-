@@ -1,48 +1,28 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Content/font-awesome.css")
+    <meta charset="utf-8">
+    <title>Tienda</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
 
-
-  <style type="text/css">
-    html,
-    body,
-    header,
-    .carousel {
-      height: 60vh;
-    }
-
-    @@media (max-width: 740px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-
-    @@media (min-width: 800px) and (max-width: 850px) {
-
-      html,
-      body,
-      header,
-      .carousel {
-        height: 100vh;
-      }
-    }
-  </style>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Libraries Stylesheet -->
+    <link href="~/Content/lib/owlcarousel/owl.carousel.min.js"   rel="stylesheet">
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/Content/css/style.css" rel="stylesheet">
 </head>
 
-
-
 <body>
-    @Html.Partial("_Navbar");
+    @Html.Partial("_Topbar")
+    @Html.Partial("_Navbar")
     @RenderBody()
     @Html.Partial("_Footer")
     @Scripts.Render("~/bundles/jquery")

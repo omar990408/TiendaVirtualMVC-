@@ -22,15 +22,13 @@ namespace TiendaVirtualMVC.Models
         }
     
         public int ProductoID { get; set; }
+        public string NombreProducto { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
-        public string NombreProducto { get; set; }
-        public string Detalles { get; set; }
         public string Imagen { get; set; }
-        public Nullable<int> codigo_proveedor { get; set; }
-       public HttpPostedFileBase ImageFile { get; set; }
-
-    
+        public string Detalles { get; set; }
+        public int codigo_proveedor { get; set; }
+         public HttpPostedFileBase ImageFile { get; set; }   
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidosItem> PedidosItems { get; set; }
         public virtual Proveedor Proveedor { get; set; }

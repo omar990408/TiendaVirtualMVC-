@@ -22,9 +22,9 @@ namespace TiendaVirtualMVC.Models
     
         public int codigo_proveedor { get; set; }
         public string nombre_proveedor { get; set; }
-        public string cuidad { get; set; }
-        public string estado { get; set; }
-        public string email { get; set; }
+        public string ciudad { get; set; }
+        public bool estado { get; set; }
+        public string Email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Productos { get; set; }
