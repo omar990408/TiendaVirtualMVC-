@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Web;
 
 namespace TiendaVirtualMVC.Models
@@ -24,7 +21,7 @@ namespace TiendaVirtualMVC.Models
         [Display(Name = "Ingrese los detalles:")]
         public string Detalles { get; set; }
 
-         HttpPostedFileBase ImageFile { get; set; }
+        HttpPostedFileBase ImageFile { get; set; }
 
     }
     [MetadataType(typeof(ProductoCE))]
