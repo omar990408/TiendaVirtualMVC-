@@ -217,6 +217,7 @@
       <DependentUpon>TiendaDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductoCE.cs" />
+    <Compile Include="Models\ProductoDAO.cs" />
     <Compile Include="Models\Proveedor.cs">
       <DependentUpon>TiendaDB.tt</DependentUpon>
     </Compile>
@@ -521,6 +522,7 @@
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
+    <Content Include="Views\Producto\SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

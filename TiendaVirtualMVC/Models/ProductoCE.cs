@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Web;
 
 namespace TiendaVirtualMVC.Models
@@ -22,6 +24,7 @@ namespace TiendaVirtualMVC.Models
         public string Detalles { get; set; }
 
         public HttpPostedFileBase ImageFile { get; set; }
+
 
     }
     [MetadataType(typeof(ProductoCE))]

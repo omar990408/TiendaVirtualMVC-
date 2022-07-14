@@ -128,5 +128,25 @@ namespace TiendaVirtualMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+
+        public ActionResult SearchForName(string searchPhrase)
+        {
+            // Obtener una lista de resultados de la base de datos
+
+            try
+            {
+                using (var db = new TiendaContext())
+                {
+                    List<ProductoCE> searchResults = ProductoCE.SearchForName(searchPhrase);
+
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+        }
     }
 }
