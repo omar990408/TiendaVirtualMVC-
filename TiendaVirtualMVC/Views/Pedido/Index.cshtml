@@ -5,40 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pedidos</h2>
+<div class="container">
+    <h2>Pedidos</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo", "Agregar")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Cliente
-        </th>
-        <th>
-            Fecha Pedido
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <p>
+        @Html.ActionLink("Crear Nuevo", "Agregar")
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(item.ClienteID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPedido)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.PedidoID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoID }, new { @class = "aEliminar" })
-            </td>
+            <th>
+                Cliente
+            </th>
+            <th>
+                Fecha Pedido
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(item.ClienteID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaPedido)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id = item.PedidoID }) |
+                    @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoID }) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoID }, new { @class = "aEliminar" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
 @section scripts
 {
     <script>

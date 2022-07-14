@@ -7,6 +7,8 @@
 
 <h2>Detalles</h2>
 
+
+
 <div class="container">
     <h4>Producto</h4>
     <hr />
@@ -39,11 +41,8 @@
             Imagen
         </dt>
 
-
-
-
         <dd>
-            <img src="@Url.Content(Model.Imagen)" width="250" height="250" />
+            <img src="@Url.Content(model => model.Imagen)" width="250" height="250" />
         </dd>
 
         <dt>
@@ -53,6 +52,7 @@
         <dd>
             @Html.DisplayFor(model => model.Detalles)
         </dd>
+
     </dl>
 
     <p>
@@ -60,3 +60,6 @@
         @Html.ActionLink("Regresar", "Index")
     </p>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

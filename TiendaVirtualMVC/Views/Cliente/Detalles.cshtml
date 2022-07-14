@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
 <h2>Detalles</h2>
-
-<div>
     <h4>Cliente</h4>
     <hr />
     <dl class="dl-horizontal">
@@ -92,8 +91,10 @@
         </dd>
 
     </dl>
-</div>
+
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.ClienteID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>
+
+</div>

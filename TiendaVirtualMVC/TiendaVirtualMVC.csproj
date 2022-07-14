@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -47,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -179,6 +178,7 @@
     <Compile Include="Controllers\PedidosItemController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Filters\Filtro_VERIFICA_SESSION.cs" />
     <Compile Include="Global.asax.cs">
@@ -239,6 +239,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\ViewModel\ShoppingCartModel.cs" />
+    <Compile Include="Views\ViewModel\ShoppingViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\style.css" />
@@ -291,25 +293,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="img\download223849669.jpg" />
-    <Content Include="img\download223853880.jpg" />
-    <Content Include="img\download223903909.jpg" />
-    <Content Include="img\download224006289.jpg" />
-    <Content Include="img\download224010832.jpg" />
-    <Content Include="img\download224019737.jpg" />
-    <Content Include="img\download224023868.jpg" />
-    <Content Include="img\download224356813.jpg" />
-    <Content Include="img\download224445279.jpg" />
-    <Content Include="img\download224525148.jpg" />
-    <Content Include="img\download224531748.jpg" />
-    <Content Include="img\download224732559.jpg" />
-    <Content Include="img\download225142288.jpg" />
-    <Content Include="img\download225759445.jpg" />
-    <Content Include="img\download225922460.jpg" />
-    <Content Include="img\download225926731.jpg" />
-    <Content Include="img\download225941352.jpg" />
-    <Content Include="img\download225948459.jpg" />
-    <Content Include="img\Leche-Fresca223713039.png" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -411,6 +394,14 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TiendaDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="img\28ad2c36-761e-4abe-b42c-efad16450f59.jfif" />
+    <Content Include="img\66717bdf-4827-427c-bf92-f0715d514b6c.jpg" />
+    <Content Include="img\93fdd4c9-f1eb-4b3c-ad79-bdcb25b73d07.png" />
+    <Content Include="img\a864d7ae-7a62-4962-9089-a60ad4fb8d0e.jpg" />
+    <Content Include="img\c7640801-1eb3-4233-8e92-cc6e50f3f3b6.jfif" />
+    <Content Include="img\cf41da77-207f-43eb-8496-83323e457a8c.jpg" />
+    <Content Include="img\ddbfd3a8-090d-47ec-a78c-04ab9bb77071.png" />
+    <Content Include="img\e0668329-92d2-4d49-8b81-b32c7af4c475.png" />
     <Content Include="Models\TiendaDB.edmx.diagram">
       <DependentUpon>TiendaDB.edmx</DependentUpon>
     </Content>
@@ -519,10 +510,21 @@
     <Content Include="Views\Shared\_Topbar.cshtml" />
     <Content Include="Views\Shared\_Feautured.cshtml" />
     <Content Include="Views\Shared\_Categories.cshtml" />
+    <Content Include="Views\Proveedor\Agregar.cshtml" />
+    <Content Include="Views\Proveedor\Detalles.cshtml" />
+    <Content Include="Views\Proveedor\Editar.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\Productoes\Create.cshtml" />
+    <Content Include="Views\Productoes\Delete.cshtml" />
+    <Content Include="Views\Productoes\Details.cshtml" />
+    <Content Include="Views\Productoes\Edit.cshtml" />
+    <Content Include="Views\Productoes\Index.cshtml" />
+    <Content Include="Views\Shared\_ShoppingCart.cshtml" />
+    <Content Include="Views\Shopping\Index.cshtml" />
+    <Content Include="Views\Shopping\ShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Proveedor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -567,10 +569,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
-    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
-  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

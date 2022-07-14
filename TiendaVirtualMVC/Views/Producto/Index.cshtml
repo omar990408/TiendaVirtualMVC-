@@ -5,6 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    function AddToCart(item) {
+        var itemId = $(item).attr("itemid");
+        var formData = new FormData();
+        formData.append("ItemId", itemId);
+        $.ajax({
+            async: true,
+            type: 'POST',
+            contentType: false,
+            processData: false,
+            data: formData,
+            url: '/Shopping/Index',
+            success: function(data) {
+                if (data.Success) {
+                    $("#cartItem").text("Cart(" + data.Counter + ")");
+                }
+            },
+            error: function() {
+                alert("There is some problem.");
+            }
+        });
+    }
+</script>
 <h2>Producto</h2>
 
 <div class="container">
@@ -50,6 +73,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Detalles)
             </td>
+
+
+
+
+            <td>
+
+            <div class="col-md-4" style="text-align: right; margin-bottom: 10px; padding: 2px">
+                <input type="button" name="AddToCart" value="Add to Cart" class="btn btn-primary" itemid="@item.ProductoID " id="btnAddToCart" onclick="AddToCart(this)" />
+            </div>
+                </td>
+
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }) |
                 @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }) |

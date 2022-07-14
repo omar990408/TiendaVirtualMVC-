@@ -36,14 +36,15 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="@Url.Action("Index","Tienda")" class="nav-item nav-link">Tienda</a>
+                            <a href="@Url.Action("Index","Home")" class="nav-item nav-link">Inicio</a>
                             <a href="@Url.Action("Index","Carrito")" class="nav-item nav-link">Carrito</a>
-                            <a href="@Url.Action("Index","Cliente")" class="nav-item nav-link active">Cliente</a>
+                            <a href="@Url.Action("Index","Cliente")" class="nav-item nav-link ">Cliente</a>
+                            <a href="@Url.Action("Index","Proveedor")" class="nav-item nav-link ">Proveedor</a>
+                            <a href="@Url.Action("Index","Producto")" class="nav-item nav-link ">Producto</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
-                                    <a href="checkout.html" class="dropdown-item">Checkout</a>
+
                                 </div>
                             </div>
 
@@ -51,8 +52,8 @@
 
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Login</a>
-                            <a href="" class="nav-item nav-link">Register</a>
+                            <a href="@Url.Action("Index","Account")" class="nav-item nav-link">Login</a>
+                            <a href="@Url.Action("Register","Account")" class="nav-item nav-link">Registrarse</a>
                         </div>
                     </div>
                 </nav>

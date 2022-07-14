@@ -5,9 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="container">
 <h2>Editar</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -94,6 +93,8 @@
     @Html.ActionLink("Regresar", "Index")
 </div>
 
+    </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+    

@@ -21,7 +21,7 @@ namespace TiendaVirtualMVC.Models
         [Display(Name = "Ingrese los detalles:")]
         public string Detalles { get; set; }
 
-        HttpPostedFileBase ImageFile { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
 
     }
     [MetadataType(typeof(ProductoCE))]
