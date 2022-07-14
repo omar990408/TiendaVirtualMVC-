@@ -16,6 +16,5 @@ namespace MiTiendaMVC5Model.ViewModel
         public int codigo_proveedor { get; set; }
         public int stock { get; set; }
         
-        public 
     }
 }
