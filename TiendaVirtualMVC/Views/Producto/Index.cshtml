@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
+
 
 <script type="text/javascript">
     function AddToCart(item) {
@@ -28,6 +31,9 @@
         });
     }
 </script>
+
+
+
 <h2>Producto</h2>
 
 <div class="container">
@@ -72,9 +78,13 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Precio)
                 </td>
+
+
+
                 <td>
+                <div class="polaroid">
                     <img src="@Url.Content(item.Imagen)" alt="Producto" height="200" />
-                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
+                </div>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Detalles)
@@ -86,14 +96,28 @@
                     @Html.DisplayFor(modelItem => item.stock)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }) |
-                    @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }) |
-                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ProductoID }, new { @class = "aEliminar" })
+                    <div id="container">
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }, new { @class = "btn btn-primary fa-solid fa-pen-to-square" })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }, new { @class = "btn btn-secondary" })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ProductoID }, new { @class = "btn btn-danger aEliminar" })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
     </table>
 </div>
+
 @section scripts
 {
     <script>

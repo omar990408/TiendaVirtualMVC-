@@ -508,7 +508,7 @@
     <Content Include="Views\Shared\_Products.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
-    <Content Include="Views\Shared\_Feautured.cshtml" />
+    <Content Include="Views\Shared\_Featured.cshtml" />
     <Content Include="Views\Shared\_Categories.cshtml" />
     <Content Include="Views\Proveedor\Agregar.cshtml" />
     <Content Include="Views\Proveedor\Detalles.cshtml" />
@@ -519,6 +519,7 @@
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\Producto\SearchForm.cshtml" />
     <Content Include="Views\Producto\ListarProveedor.cshtml" />
+    <Content Include="Views\Producto\Detalles - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,11 +19,29 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="~/Content/css/style.css" rel="stylesheet">
 </head>
+    
+
 
 <body>
+
+<style>
+
+
+div.polaroid {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+</style>
     @Html.Partial("_Topbar")
     @Html.Partial("_Navbar")
+
+    <div class="container">
     @RenderBody()
+        </div>
+
     @Html.Partial("_Footer")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
