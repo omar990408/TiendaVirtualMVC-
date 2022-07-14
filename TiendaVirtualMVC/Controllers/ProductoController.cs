@@ -32,24 +32,28 @@ namespace TiendaVirtualMVC.Controllers
             return View();
         }
 
+
         [HttpPost]
-        [ValidateAntiForgeryTokenAttribute]
-        public ActionResult Agregar(Producto producto)
+        [ValidateAntiForgeryToken]
+        public ActionResult Agregar (Producto producto)
         {
             try
             {
-                string filename = Path.GetFileNameWithoutExtension(producto.ImageFile.FileName);
+                //if (!ModelState.IsValid)
+                //    return View();
+
+                string fileName = Path.GetFileNameWithoutExtension(producto.ImageFile.FileName);
                 string extension = Path.GetExtension(producto.ImageFile.FileName);
-                filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-                producto.Imagen = "~/img/" + filename;
-                filename = Path.Combine(Server.MapPath("~/img/"), filename);
-                producto.ImageFile.SaveAs(filename);
-                if (!ModelState.IsValid)
-                    return View();
-                using (var db = new TiendaContext())
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                producto.Imagen = "~/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+                producto.ImageFile.SaveAs(fileName);
+
+                using(var db = new TiendaContext())
                 {
                     db.Productos.Add(producto);
                     db.SaveChanges();
+                    ModelState.Clear();
                     return RedirectToAction("Index");
                 }
             }
@@ -78,18 +82,18 @@ namespace TiendaVirtualMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar(Producto producto)
+        public ActionResult Editar (Producto producto)
         {
-            string filename = Path.GetFileNameWithoutExtension(producto.ImageFile.FileName);
-            string extension = Path.GetExtension(producto.ImageFile.FileName);
-            filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
-            producto.Imagen = "~/img/" + filename;
-            filename = Path.Combine(Server.MapPath("~/img/"), filename);
-            producto.ImageFile.SaveAs(filename);
+
             try
             {
-                if (!ModelState.IsValid)
-                    return View();
+
+                string fileName = Path.GetFileNameWithoutExtension(producto.ImageFile.FileName);
+                string extension = Path.GetExtension(producto.ImageFile.FileName);
+                fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                producto.Imagen = "~/Image/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Image/"), fileName);
+                producto.ImageFile.SaveAs(fileName);
 
                 using (var db = new TiendaContext())
                 {
@@ -99,12 +103,16 @@ namespace TiendaVirtualMVC.Controllers
                     productodb.Precio = producto.Precio;
                     productodb.Imagen = producto.Imagen;
                     productodb.Detalles = producto.Detalles;
+                    productodb.codigo_proveedor = producto.codigo_proveedor;
+                    productodb.stock = producto.stock;
+                    ModelState.Clear();
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -130,6 +138,31 @@ namespace TiendaVirtualMVC.Controllers
         }
 
 
+        public ActionResult ListarProveedor()
+        {
+            try
+            {
+                using (var db = new TiendaContext())
+                {
+                    return PartialView(db.Proveedors.ToList());
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static string NombreProveedor(int? proveedorID)
+        {
+            using (var db = new TiendaContext())
+            {
+                return db.Proveedors.Find(proveedorID).nombre_proveedor;
+            }
+        }
+        
+        /*
         public ActionResult SearchForName(string searchPhrase)
         {
             // Obtener una lista de resultados de la base de datos
@@ -148,5 +181,6 @@ namespace TiendaVirtualMVC.Controllers
             }
 
         }
+        */
     }
 }

@@ -5,6 +5,7 @@ using System.Web;
 
 // Clase que realiza todos los eventos relacionados con la BD  (DAO)
 // (Search)
+/*
 namespace TiendaVirtualMVC.Models
 { 
     internal class ProductoDAO
@@ -13,3 +14,4 @@ namespace TiendaVirtualMVC.Models
         List<>
     }
 }
+*/

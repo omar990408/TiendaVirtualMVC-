@@ -1,4 +1,5 @@
-﻿@model TiendaVirtualMVC.Models.Producto
+﻿
+@model TiendaVirtualMVC.Models.Producto
 
 @{
     ViewBag.Title = "Agregar";
@@ -7,11 +8,11 @@
 
 <h2>Agregar</h2>
 
-<div class="container">
 
-@using (Html.BeginForm("Agregar", "Producto", FormMethod.Post, new { enctype = "multipart/form-data"})) 
+@using (Html.BeginForm("Agregar","Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+    
     <div class="form-horizontal">
         <h4>Producto</h4>
         <hr />
@@ -40,15 +41,13 @@
             </div>
         </div>
 
-
-    <div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <!-- ADD  HTML ELEMENT-->
                 <input type="file" name="ImageFile" required />
-                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Detalles, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -58,18 +57,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.codigo_proveedor, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
+                @Html.Action("ListarProveedor","Producto")
+                @Html.ValidationMessageFor(model => model.codigo_proveedor, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.codigo_proveedor, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.codigo_proveedor, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.codigo_proveedor, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -83,7 +82,6 @@
 
 <div>
     @Html.ActionLink("Regresar", "Index")
-</div>
 </div>
 
 @section Scripts {

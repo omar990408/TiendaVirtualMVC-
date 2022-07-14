@@ -1,4 +1,5 @@
-﻿@model TiendaVirtualMVC.Models.Producto
+﻿
+@model TiendaVirtualMVC.Models.Producto
 
 @{
     ViewBag.Title = "Editar";
@@ -8,11 +9,10 @@
 <h2>Editar</h2>
 
 
-<div class="container">
-@using (Html.BeginForm("Editar", "Producto", FormMethod.Post, new { enctype = "multipart/form-data"})) 
+@using (Html.BeginForm("Editar", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Producto</h4>
         <hr />
@@ -43,19 +43,36 @@
             </div>
         </div>
 
-
         <div class="form-group">
             @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <!-- ADD  HTML ELEMENT-->
+                @*@Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })*@
                 <input type="file" name="ImageFile" required />
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Detalles, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Detalles, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Detalles, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codigo_proveedor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Action("ListarProveedor", "Producto")
+                @Html.ValidationMessageFor(model => model.codigo_proveedor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.stock, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.stock, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -70,8 +87,11 @@
 <div>
     @Html.ActionLink("Regresar", "Index")
 </div>
-    </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @*<script>
+        $("#codigo_proveedor").val("@Model.codigo_proveedor");
+    </script>*@
 }

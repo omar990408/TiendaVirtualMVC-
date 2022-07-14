@@ -394,14 +394,14 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TiendaDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="img\28ad2c36-761e-4abe-b42c-efad16450f59.jfif" />
-    <Content Include="img\66717bdf-4827-427c-bf92-f0715d514b6c.jpg" />
-    <Content Include="img\93fdd4c9-f1eb-4b3c-ad79-bdcb25b73d07.png" />
-    <Content Include="img\a864d7ae-7a62-4962-9089-a60ad4fb8d0e.jpg" />
-    <Content Include="img\c7640801-1eb3-4233-8e92-cc6e50f3f3b6.jfif" />
-    <Content Include="img\cf41da77-207f-43eb-8496-83323e457a8c.jpg" />
-    <Content Include="img\ddbfd3a8-090d-47ec-a78c-04ab9bb77071.png" />
-    <Content Include="img\e0668329-92d2-4d49-8b81-b32c7af4c475.png" />
+    <Content Include="Image\28ad2c36-761e-4abe-b42c-efad16450f59.jfif" />
+    <Content Include="Image\66717bdf-4827-427c-bf92-f0715d514b6c.jpg" />
+    <Content Include="Image\93fdd4c9-f1eb-4b3c-ad79-bdcb25b73d07.png" />
+    <Content Include="Image\a864d7ae-7a62-4962-9089-a60ad4fb8d0e.jpg" />
+    <Content Include="Image\c7640801-1eb3-4233-8e92-cc6e50f3f3b6.jfif" />
+    <Content Include="Image\cf41da77-207f-43eb-8496-83323e457a8c.jpg" />
+    <Content Include="Image\ddbfd3a8-090d-47ec-a78c-04ab9bb77071.png" />
+    <Content Include="Image\e0668329-92d2-4d49-8b81-b32c7af4c475.png" />
     <Content Include="Models\TiendaDB.edmx.diagram">
       <DependentUpon>TiendaDB.edmx</DependentUpon>
     </Content>
@@ -514,15 +514,11 @@
     <Content Include="Views\Proveedor\Detalles.cshtml" />
     <Content Include="Views\Proveedor\Editar.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
-    <Content Include="Views\Productoes\Create.cshtml" />
-    <Content Include="Views\Productoes\Delete.cshtml" />
-    <Content Include="Views\Productoes\Details.cshtml" />
-    <Content Include="Views\Productoes\Edit.cshtml" />
-    <Content Include="Views\Productoes\Index.cshtml" />
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
     <Content Include="Views\Shopping\Index.cshtml" />
     <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\Producto\SearchForm.cshtml" />
+    <Content Include="Views\Producto\ListarProveedor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
