@@ -34,6 +34,13 @@
 
         <dd>
             @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(Model.ProductoID)
+        </dd>
+
+        <dt>
+            Imagen
+        </dt>
+        <dd>
+            <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(Model.ProductoID))" alt="Producto" width="250" />
             @*@Html.DisplayFor(model => model.ProductoID)*@
         </dd>
 

@@ -159,6 +159,14 @@ namespace TiendaVirtualMVC.Controllers
             }
         }
 
+        public static string ImagenProducto(int productoID)
+        {
+            using (var db = new TiendaContext())
+            {
+                return db.Productos.Find(productoID).Imagen;
+            }
+        }
+
         public static int NombreRazonSocial(int pedidoID)
         {
             using(var db = new TiendaContext())

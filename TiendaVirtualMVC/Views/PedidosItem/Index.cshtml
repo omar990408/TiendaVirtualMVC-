@@ -13,13 +13,16 @@
 <table class="table">
     <tr>
         @*<th>
-                @Html.DisplayNameFor(model => model.PedidoItemID)
-            </th>*@
+            @Html.DisplayNameFor(model => model.PedidoItemID)
+        </th>*@
         <th>
             Pedido
         </th>
         <th>
             Producto
+        </th>
+        <th>
+            Imagen
         </th>
         <th>
             Cantidad
@@ -29,27 +32,31 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.PedidoItemID)
-                </td>*@
-            <td>
-                @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
-                @*@Html.DisplayFor(modelItem => item.PedidoID)*@
-            </td>
-            <td>
-                @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
-                @*@Html.DisplayFor(modelItem => item.ProductoID)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
-            </td>
-        </tr>
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PedidoItemID)
+        </td>*@
+        <td>
+            @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
+            @*@Html.DisplayFor(modelItem => item.PedidoID)*@
+        </td>
+        <td>
+            @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
+            @*@Html.DisplayFor(modelItem => item.ProductoID)*@
+        </td>
+        <td>
+            @*@TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)*@
+            <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(item.ProductoID))" alt="Producto" width="250" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cantidad)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
+            @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
+        </td>
+    </tr>
     }
 
 </table>
