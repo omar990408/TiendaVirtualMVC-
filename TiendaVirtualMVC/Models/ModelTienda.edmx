@@ -108,6 +108,7 @@
           <Property Name="Imagen" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Detalles" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="codigo_proveedor" Type="int" Nullable="false" />
+          <Property Name="stock" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
@@ -176,7 +177,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pedidos_Clientes">
-          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clientes">
@@ -188,7 +191,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Pedidos">
-          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PedidosItems" Type="Self.PedidosItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pedidos">
@@ -200,7 +205,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Productos">
-          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="PedidosItems" Type="Self.PedidosItems" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Productos">
@@ -212,7 +219,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Productos_Proveedor">
-          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proveedor">
@@ -278,11 +287,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="MiTiendaMVC5Model.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="MiTiendaMVC5Model.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="MiTiendaMVC5Model.AspNetUser" />
-          <EntitySet Name="Clientes" EntityType="MiTiendaMVC5Model.Cliente" />
-          <EntitySet Name="Pedidos" EntityType="MiTiendaMVC5Model.Pedido" />
-          <EntitySet Name="PedidosItems" EntityType="MiTiendaMVC5Model.PedidosItem" />
-          <EntitySet Name="Productos" EntityType="MiTiendaMVC5Model.Producto" />
-          <EntitySet Name="Proveedors" EntityType="MiTiendaMVC5Model.Proveedor" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="MiTiendaMVC5Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -291,6 +295,15 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="MiTiendaMVC5Model.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="Clientes" EntityType="MiTiendaMVC5Model.Cliente" />
+          <EntitySet Name="Pedidos" EntityType="MiTiendaMVC5Model.Pedido" />
+          <EntitySet Name="PedidosItems" EntityType="MiTiendaMVC5Model.PedidosItem" />
+          <EntitySet Name="Productos" EntityType="MiTiendaMVC5Model.Producto" />
+          <EntitySet Name="Proveedors" EntityType="MiTiendaMVC5Model.Proveedor" />
           <AssociationSet Name="FK_Pedidos_Clientes" Association="MiTiendaMVC5Model.FK_Pedidos_Clientes">
             <End Role="Cliente" EntitySet="Clientes" />
             <End Role="Pedido" EntitySet="Pedidos" />
@@ -307,11 +320,7 @@
             <End Role="Proveedor" EntitySet="Proveedors" />
             <End Role="Producto" EntitySet="Productos" />
           </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="MiTiendaMVC5Model.AspNetUserRoles">
-            <End Role="AspNetRole" EntitySet="AspNetRoles" />
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -371,6 +380,38 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="MiTiendaMVC5Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="AspNetRoles" Relationship="MiTiendaMVC5Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MiTiendaMVC5Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MiTiendaMVC5Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="MiTiendaMVC5Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="ClienteID" />
@@ -418,6 +459,7 @@
           <Property Name="Imagen" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Detalles" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="codigo_proveedor" Type="Int32" Nullable="false" />
+          <Property Name="stock" Type="Int32" Nullable="false" />
           <NavigationProperty Name="PedidosItems" Relationship="MiTiendaMVC5Model.FK_PedidosItems_Productos" FromRole="Producto" ToRole="PedidosItem" />
           <NavigationProperty Name="Proveedor" Relationship="MiTiendaMVC5Model.FK_Productos_Proveedor" FromRole="Producto" ToRole="Proveedor" />
         </EntityType>
@@ -432,36 +474,10 @@
           <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Productos" Relationship="MiTiendaMVC5Model.FK_Productos_Proveedor" FromRole="Proveedor" ToRole="Producto" />
         </EntityType>
-        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MiTiendaMVC5Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserClaim">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="MiTiendaMVC5Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="AspNetUserLogin">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pedidos_Clientes">
-          <End Type="MiTiendaMVC5Model.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="MiTiendaMVC5Model.Cliente" Role="Cliente" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Cliente">
@@ -473,7 +489,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Pedidos">
-          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="1" />
+          <End Type="MiTiendaMVC5Model.Pedido" Role="Pedido" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pedido">
@@ -485,7 +503,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PedidosItems_Productos">
-          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="1" />
+          <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="MiTiendaMVC5Model.PedidosItem" Role="PedidosItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Producto">
@@ -497,7 +517,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Productos_Proveedor">
-          <End Type="MiTiendaMVC5Model.Proveedor" Role="Proveedor" Multiplicity="1" />
+          <End Type="MiTiendaMVC5Model.Proveedor" Role="Proveedor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="MiTiendaMVC5Model.Producto" Role="Producto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proveedor">
@@ -508,11 +530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AspNetUserRoles">
-          <End Type="MiTiendaMVC5Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
-          <End Type="MiTiendaMVC5Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -573,6 +591,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MiTiendaMVC5Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="Clientes">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Cliente">
               <MappingFragment StoreEntitySet="Clientes">
@@ -610,6 +636,7 @@
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="MiTiendaMVC5Model.Producto">
               <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="codigo_proveedor" ColumnName="codigo_proveedor" />
                 <ScalarProperty Name="Detalles" ColumnName="Detalles" />
                 <ScalarProperty Name="Imagen" ColumnName="Imagen" />
@@ -631,15 +658,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="MiTiendaMVC5Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetUser">
-              <ScalarProperty Name="Id" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="AspNetRole">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

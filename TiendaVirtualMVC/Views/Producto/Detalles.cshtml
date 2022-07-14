@@ -40,7 +40,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Imagen)
+            <img src="@Url.Content(Model.Imagen)" alt="Producto" width="250" />
         </dd>
 
         <dt>
@@ -51,9 +51,25 @@
             @Html.DisplayFor(model => model.Detalles)
         </dd>
 
+        <dt>
+            Proveedor
+        </dt>
+
+        <dd>
+            @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(Model.codigo_proveedor)
+        </dd>
+
+        <dt>
+            Stock
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Editar", new { id = Model.ProductoID }) |
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ProductoID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>

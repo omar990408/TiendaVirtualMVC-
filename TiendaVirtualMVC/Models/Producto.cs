@@ -11,7 +11,8 @@ namespace TiendaVirtualMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,8 +26,10 @@ namespace TiendaVirtualMVC.Models
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public string Imagen { get; set; }
+        public HttpPostedFileBase ImageFile { get; set; }
         public string Detalles { get; set; }
         public int codigo_proveedor { get; set; }
+        public int stock { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidosItem> PedidosItems { get; set; }
