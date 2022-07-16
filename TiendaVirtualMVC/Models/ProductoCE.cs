@@ -21,9 +21,6 @@ namespace TiendaVirtualMVC.Models
         [Display(Name = "Ingrese la imagen:")]
         public string Imagen { get; set; }
         [Required]
-        [Display(Name = "Ingrese los detalles:")]
-        public string Detalles { get; set; }
-        [Required]
         [Display(Name = "Ingrese el proveedor:")]
         public int codigo_proveedor { get; set; }
         [Required]

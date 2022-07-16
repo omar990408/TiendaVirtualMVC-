@@ -247,6 +247,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\camisetaRM224407868.jpg" />
+    <Content Include="Image\gorra225008537.png" />
+    <Content Include="Image\hoodie224032602.jpg" />
+    <Content Include="Image\jean224123859.jpg" />
+    <Content Include="Image\red-jean224200733.jpg" />
     <Content Include="Models\ModelTienda.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelTienda.edmx</DependentUpon>
@@ -342,7 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

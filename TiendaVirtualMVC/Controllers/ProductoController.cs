@@ -104,7 +104,6 @@ namespace TiendaVirtualMVC.Controllers
                     productodb.Descripcion = producto.Descripcion;
                     productodb.Precio = producto.Precio;
                     productodb.Imagen = producto.Imagen;
-                    productodb.Detalles = producto.Detalles;
                     productodb.codigo_proveedor = producto.codigo_proveedor;
                     productodb.stock = producto.stock;
                     ModelState.Clear();

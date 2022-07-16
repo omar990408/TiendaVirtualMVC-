@@ -30,9 +30,6 @@
             Imagen
         </th>
         <th>
-            Detalles
-        </th>
-        <th>
             Proveedor
         </th>
         <th>
@@ -56,9 +53,6 @@
             <td>
                 <img src="@Url.Content(item.Imagen)" alt="Producto" height="200" />
                 @*@Html.DisplayFor(modelItem => item.Imagen)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Detalles)
             </td>
             <td>
                 @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(item.codigo_proveedor)
