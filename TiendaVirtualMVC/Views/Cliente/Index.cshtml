@@ -7,80 +7,101 @@
 
 <h2>Clientes</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo", "Agregar")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Razon Social
-        </th>
-        <th>
-            Direccion
-        </th>
-        <th>
-            Ciudad
-        </th>
-        <th>
-            Código
-        </th>
-        <th>
-            Provincia
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.CodigoPostal)
-            </th>*@
-        <th>
-            RIF
-        </th>
-        @*<th>
-                Pais
-            </th>*@
-        <th>
-            Telefono Movil
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@{
+    if (User.IsInRole("Administrador"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RazonSocial)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ciudad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pais_CodPostal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.CodigoPostal)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Rif)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Pais)
-                </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefonos)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.ClienteID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.ClienteID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ClienteID }, new { @class = "aEliminar" })
-            </td>
-        </tr>
-    }
+        <p>
+            @Html.ActionLink("Crear Nuevo", "Agregar")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Razon Social
+                </th>
+                <th>
+                    Direccion
+                </th>
+                <th>
+                    Ciudad
+                </th>
+                <th>
+                    Código
+                </th>
+                <th>
+                    Provincia
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CodigoPostal)
+                    </th>*@
+                <th>
+                    RIF
+                </th>
+                @*<th>
+                        Pais
+                    </th>*@
+                <th>
+                    Telefono Movil
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RazonSocial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ciudad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pais_CodPostal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.CodigoPostal)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rif)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Pais)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Telefonos)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.ClienteID }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.ClienteID }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ClienteID }, new { @class = "aEliminar" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
+            </div>
+        </div>
+    }
+}
+
 @section scripts
 {
     <script>

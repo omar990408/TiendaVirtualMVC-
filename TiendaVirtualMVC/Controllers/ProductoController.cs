@@ -8,6 +8,7 @@ using TiendaVirtualMVC.Models;
 
 namespace TiendaVirtualMVC.Controllers
 {
+    [Authorize]
     public class ProductoController : Controller
     {
         // GET: Producto

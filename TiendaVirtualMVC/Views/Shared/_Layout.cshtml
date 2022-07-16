@@ -19,11 +19,31 @@
             <ul class="nav">
                 <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                 <li>@Html.ActionLink("Tienda", "Index", "Tienda")</li>
+                @{
+                    if (User.IsInRole("Administrador"))
+                    {
+                        <li> @Html.ActionLink("Clientes", "Index", "Cliente") </li>
+                        <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
+
+                    }
+                    else if (User.IsInRole("Proveedor"))
+                    {
+                        <li>@Html.ActionLink("Proveedores", "Index", "Proveedor")</li>
+                    }
+                    else if (User.IsInRole("Cliente"))
+                    {
+                        <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
+                        <li>@Html.ActionLink("Pedidos - Item", "Index", "PedidosItem")</li>
+                        <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
+                    }
+                }
+                @*<li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Tienda", "Index", "Tienda")</li>
                 <li>@Html.ActionLink("Clientes", "Index", "Cliente")</li>
                 <li>@Html.ActionLink("Proveedores", "Index", "Proveedor")</li>
                 <li>@Html.ActionLink("Productos", "Index", "Producto")</li>
                 <li>@Html.ActionLink("Pedidos", "Index", "Pedido")</li>
-                <li>@Html.ActionLink("Pedidos - Item", "Index", "PedidosItem")</li>
+                <li>@Html.ActionLink("Pedidos - Item", "Index", "PedidosItem")</li>*@
                 @*<li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>*@
                 @*<li>@Html.ActionLink("Ingresar", "Login", "Account")</li>
         <li>@Html.ActionLink("Registro", "Register", "Account")</li>*@

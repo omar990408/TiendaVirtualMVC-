@@ -5,50 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Proveedor</h2>
 
-<p>
-    @Html.ActionLink("Ingresar Proveedor", "Agregar")
-</p>
-<table class="table">
-    <tr>
+@{
+    if (User.IsInRole("Proveedor"))
+    {
+        <p>
+            @Html.ActionLink("Ingresar Proveedor", "Agregar")
+        </p>
+        <table class="table">
+            <tr>
 
-        <th>
-            Proveedor
-        </th>
-        <th>
-            Ciudad
-        </th>
-        <th>
-            Estado
-        </th>
-        <th>
-            Email
-        </th>
-        <th></th>
-    </tr>
+                <th>
+                    Proveedor
+                </th>
+                <th>
+                    Ciudad
+                </th>
+                <th>
+                    Estado
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre_proveedor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ciudad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.codigo_proveedor }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id=item.codigo_proveedor }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new {  id=item.codigo_proveedor })
-        </td>
-    </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre_proveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ciudad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.codigo_proveedor }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.codigo_proveedor }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.codigo_proveedor })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
+            </div>
+        </div>
+    }
 }
 
-</table>

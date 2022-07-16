@@ -7,9 +7,14 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Ingrese un nuevo Producto", "Agregar")
-</p>
+@{
+    if (User.IsInRole("Administrador"))
+    {
+        <p>
+            @Html.ActionLink("Ingrese un nuevo Producto", "Agregar")
+        </p>
+    }
+}
 <table class="table">
     <tr>
         <th>
@@ -61,11 +66,17 @@
             <td>
                 @Html.DisplayFor(modelItem => item.stock)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ProductoID }, new { @class = "aEliminar" })
-            </td>
+            @{
+                if (User.IsInRole("Administrador"))
+                {
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.ProductoID }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ProductoID }, new { @class = "aEliminar" })
+                    </td>
+                }
+            }
+
         </tr>
     }
 

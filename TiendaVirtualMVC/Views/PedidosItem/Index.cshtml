@@ -7,59 +7,81 @@
 
 <h2>Pedidos - Item</h2>
 
-<p>
-    @Html.ActionLink("Crear Nuevo", "Agregar")
-</p>
-<table class="table">
-    <tr>
-        @*<th>
-            @Html.DisplayNameFor(model => model.PedidoItemID)
-        </th>*@
-        <th>
-            Pedido
-        </th>
-        <th>
-            Producto
-        </th>
-        <th>
-            Imagen
-        </th>
-        <th>
-            Cantidad
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+@{
+    if (User.IsInRole("Cliente"))
     {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.PedidoItemID)
-        </td>*@
-        <td>
-            @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
-            @*@Html.DisplayFor(modelItem => item.PedidoID)*@
-        </td>
-        <td>
-            @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
-            @*@Html.DisplayFor(modelItem => item.ProductoID)*@
-        </td>
-        <td>
-            @*@TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)*@
-            <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(item.ProductoID))" alt="Producto" width="250" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cantidad)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
-        </td>
-    </tr>
-    }
+        <p>
+            @Html.ActionLink("Crear Nuevo", "Agregar")
+        </p>
+        <table class="table">
+            <tr>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.PedidoItemID)
+                    </th>*@
+                <th>
+                    Pedido
+                </th>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th></th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.PedidoItemID)
+                        </td>*@
+                    <td>
+                        @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
+                        @*@Html.DisplayFor(modelItem => item.PedidoID)*@
+                    </td>
+                    <td>
+                        @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
+                        @*@Html.DisplayFor(modelItem => item.ProductoID)*@
+                    </td>
+                    <td>
+                        @*@TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)*@
+                        <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(item.ProductoID))" alt="Producto" width="250" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
+                        @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
+                        @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
+            </div>
+        </div>
+    }
+}
+
+
 
 @section scripts
 {

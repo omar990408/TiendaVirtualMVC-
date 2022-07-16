@@ -7,67 +7,86 @@
 
 <h2>Editar</h2>
 
+@{
+    if (User.IsInRole("Proveedor"))
+    {
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Proveedor</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.codigo_proveedor)
+            <div class="form-horizontal">
+                <h4>Proveedor</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.codigo_proveedor)
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.nombre_proveedor, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.nombre_proveedor, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.nombre_proveedor, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.nombre_proveedor, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.nombre_proveedor, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nombre_proveedor, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ciudad, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select class="form-control" id="ciudad" name="ciudad">
+                            <option value="Quito" @(Model.ciudad == "Quito" ? "selected" : "" )>Quito</option>
+                            <option value="Guayaquil" @(Model.ciudad == "Guayaquil" ? "selected" : "" )>Guayaquil</option>
+                            <option value="Cuenca" @(Model.ciudad == "Cuenca" ? "selected" : "" )>Cuenca</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.ciudad, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.estado)
+                            @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Regresar", "Index")
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ciudad, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <select class="form-control" id="ciudad" name="ciudad">
-                <option value="F" @(Model.ciudad == "Quito" ? "selected" : "" )>Quito</option>
-                <option value="M" @(Model.ciudad == "Guayaquil" ? "selected" : "" )>Guayaquil</option>
-                <option value="L" @(Model.ciudad == "Cuenca" ? "selected" : "" )>Cuenca</option>
-            </select>
-            @Html.ValidationMessageFor(model => model.ciudad, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <div class="checkbox">
-                @Html.EditorFor(model => model.estado)
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+    }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
             </div>
         </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
-    </div>
-</div>
+    }
 }
-
-<div>
-    @Html.ActionLink("Regresar", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
