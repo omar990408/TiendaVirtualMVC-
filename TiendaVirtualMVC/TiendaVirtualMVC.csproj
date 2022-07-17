@@ -235,6 +235,9 @@
       <DependentUpon>ModelTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProveedorCE.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>ModelTienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
