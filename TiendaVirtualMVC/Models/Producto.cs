@@ -26,10 +26,11 @@ namespace TiendaVirtualMVC.Models
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public string Imagen { get; set; }
-        public string Detalles { get; set; }
         public int codigo_proveedor { get; set; }
         public int stock { get; set; }
+
         public HttpPostedFileBase ImageFile { get; set; }
+
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidosItem> PedidosItems { get; set; }

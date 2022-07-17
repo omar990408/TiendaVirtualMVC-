@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace TiendaVirtualMVC.Controllers
 {
@@ -10,8 +6,19 @@ namespace TiendaVirtualMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User?.Identity != null && User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Welcome");
+            }
+            else
+            {
+                return View();
+            }
         }
 
+        public ActionResult Welcome()
+        {
+            return View();
+        }
     }
 }

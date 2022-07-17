@@ -5,56 +5,136 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Pedidos - Item</h2>
+<h2>Carrito</h2>
 
-<div class="container">
-<p>
-    @Html.ActionLink("Crear Nuevo", "Agregar")
-</p>
-<table class="table">
-    <tr>
-        @*<th>
+@{
+    if (User.IsInRole("Cliente"))
+    {
+        if (Session["PedidoId"] == null)
+        {
+            @Html.ActionLink("Realiza un Pedido", "Agregar", "Pedido")
+
+        }
+        else
+        {
+            <p>
+                @Html.ActionLink("Agregar Productos", "Agregar")
+            </p>
+        }
+
+            <table class="table">
+                <tr>
+                    @*<th>
                 @Html.DisplayNameFor(model => model.PedidoItemID)
             </th>*@
-        <th>
-            Pedido
-        </th>
-        <th>
-            Producto
-        </th>
-        <th>
-            Cantidad
-        </th>
-        <th></th>
-    </tr>
+                    <th>
+                        Pedido
+                    </th>
+                    <th>
+                        Producto
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Precio Unitario
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th></th>
+                </tr>
+                @{ 
+                    decimal total = 0;
+                }
+                
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.PedidoItemID)
-                </td>*@
-            <td>
-                @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
-                @*@Html.DisplayFor(modelItem => item.PedidoID)*@
-            </td>
-            <td>
-                @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
-                @*@Html.DisplayFor(modelItem => item.ProductoID)*@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
-            </td>
-        </tr>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+
+                        <td>
+                            @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
+                            @*@Html.DisplayFor(modelItem => item.PedidoID)*@
+                        </td>
+                        <td>
+                            @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
+                            @*@Html.DisplayFor(modelItem => item.ProductoID)*@
+                        </td>
+                        <td>
+                            @*@TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)*@
+                            <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(item.ProductoID))" alt="Producto" width="250" />
+                        </td>
+                        <td>
+                            @TiendaVirtualMVC.Controllers.PedidosItemController.PrecioProducto(item.ProductoID)
+                            @{
+                                decimal valor0 = TiendaVirtualMVC.Controllers.PedidosItemController.PrecioProducto(item.ProductoID);
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                            @{
+                                int valor1 = item.Cantidad;
+                            }
+                        </td>
+                        @{
+                            total = total + (valor0 * valor1);
+                        }
+                        <td>
+                            @Html.ActionLink("Editar", "Editar", new { id = item.PedidoItemID }) |
+                            @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoItemID }) |
+                            @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoItemID }, new { @class = "aEliminar" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+
+        if (Session["PedidoId"] == null)
+        {
+
+        }
+        else
+        {
+            <div>
+                
+                    <h3 class="fw-bold"> Subtotal =  @total </h3>
+                    @{
+                        double iva = (double)total * 0.12;
+                    }
+                    <h3 class="fw-bold"> IVA 12% =  @iva </h3>
+                    @{
+                        double valPagar = (double)total + iva;
+                    }
+                    <h3 class="fw-bold"> Total a Pagar =  @valPagar </h3>
+                
+                @Html.ActionLink("Comprar", "DetalleTotal", "PedidosItem")
+                @Html.ActionLink("Cancelar", "Cancelar", "PedidosItem")
+            </div>
+        }
+
+
     }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tienes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
+            </div>
+        </div>
+    }
+}
 
-</table>
-    </div>
+
 
 @section scripts
 {
@@ -66,3 +146,4 @@
         });
     </script>
 }
+

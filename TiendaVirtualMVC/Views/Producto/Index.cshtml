@@ -3,103 +3,75 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
+<h2>Index</h2>
 
-
-<script type="text/javascript">
-    function AddToCart(item) {
-        var itemId = $(item).attr("itemid");
-        var formData = new FormData();
-        formData.append("ItemId", itemId);
-        $.ajax({
-            async: true,
-            type: 'POST',
-            contentType: false,
-            processData: false,
-            data: formData,
-            url: '/Shopping/Index',
-            success: function (data) {
-                if (data.Success) {
-                    $("#cartItem").text("Cart(" + data.Counter + ")");
-                }
-            },
-            error: function () {
-                alert("There is some problem.");
-            }
-        });
+@{
+    if (User.IsInRole("Administrador"))
+    {
+        <p>
+            @Html.ActionLink("Ingrese un nuevo Producto", "Agregar")
+        </p>
     }
-</script>
+}
+<table class="table">
+    <tr>
+        <th>
+            Nombre del Producto
+        </th>
+        @*<th>
+            Descripción
+        </th>*@
+        <th>
+            Precio
+        </th>
+        <th>
+            Imagen
+        </th>
+        @*<th>
+            Proveedor
+        </th>*@
+        <th>
+            Stock
+        </th>
+        <th></th>
+    </tr>
 
-
-
-<h2>Producto</h2>
-
-<div class="container">
-    <p>
-        @Html.ActionLink("Ingrese un nuevo Producto", "Agregar")
-    </p>
-    <table class="table">
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                Nombre del Producto
-            </th>
-            <th>
-                Descripción
-            </th>
-            <th>
-                Precio
-            </th>
-            <th>
-                Imagen
-            </th>
-            <th>
-                Detalles
-            </th>
-            <th>
-                Proveedor
-            </th>
-            <th>
-                Stock
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NombreProducto)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Precio)
-                </td>
-
-
-
-                <td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                
                 <div class="polaroid">
-                    <img src="@Url.Content(item.Imagen)" alt="Producto" height="200" />
+                <img src="@Url.Content(item.Imagen)" alt="Producto" height="200" />
+
                 </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Detalles)
-                </td>
-                <td>
-                    @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(item.codigo_proveedor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.stock)
-                </td>
-                <td>
+            </td>
+            @*<td>
+                @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(item.codigo_proveedor)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            @{
+                if (User.IsInRole("Administrador"))
+                {
+
+  <td>
                     <div id="container">
                         <div class="grid-container">
                             <div class="grid-item">
-                                @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }, new { @class = "btn btn-primary fa-solid fa-pen-to-square" })
+                             <i class="fas fa-edit"></i>   @Html.ActionLink("Editar", "Editar", new { id = item.ProductoID }, new { @class = "btn btn-primary fa-solid" })
                             </div>
                             <br />
                             <div class="grid-item">
@@ -113,13 +85,15 @@
                         </div>
                     </div>
                 </td>
-            </tr>
-        }
-    </table>
-</div>
+                }
+            }
 
-@section scripts
-{
+        </tr>
+    }
+
+</table>
+
+@section scripts{
     <script>
         $(".aEliminar").click(function (event) {
             if (!confirm('Estas seguro de eliminar?')) {

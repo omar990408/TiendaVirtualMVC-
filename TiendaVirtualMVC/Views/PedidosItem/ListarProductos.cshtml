@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<TiendaVirtualMVC.Models.Producto>
 
 <select class="form-control" id="ProductoID" name="ProductoID">
+    <option>Seleccione un Producto</option>
 
     @foreach (var item in Model)
     {
@@ -8,3 +9,14 @@
 
     }
 </select>
+@foreach (var item in Model)
+{
+    <div style="float:left; margin: 0 10px 10px 0;" id="@item.ProductoID" class="myDiv" hidden>
+        <h4 class="text-center fw-semibold">@item.NombreProducto </h4>
+        <img src="@Url.Content(TiendaVirtualMVC.Controllers.ProductoController.OnlyImage(item.ProductoID))" alt="Producto" height="200" /> <br>
+        <p class="text-center">$ @item.Precio</p>
+    </div>
+}
+
+
+

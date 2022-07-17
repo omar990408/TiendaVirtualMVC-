@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container">
-
 <h2>Detalles</h2>
 
 <div>
@@ -19,6 +17,7 @@
 
         <dd>
             @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(Model.ClienteID)
+            
         </dd>
 
         <dt>
@@ -35,4 +34,3 @@
     @Html.ActionLink("Edit", "Editar", new { id = Model.PedidoID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>
-</div>

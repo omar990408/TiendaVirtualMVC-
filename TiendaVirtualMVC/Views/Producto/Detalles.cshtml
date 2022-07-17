@@ -29,16 +29,7 @@
                 <h3 class="font-weight-semi-bold">
                     @Html.DisplayFor(model => model.NombreProducto)
                 </h3>
-                <div class="d-flex mb-3">
-                    <div class="text-primary mr-2">
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star"></small>
-                        <small class="fas fa-star-half-alt"></small>
-                        <small class="far fa-star"></small>
-                    </div>
-                    <small class="pt-1">(50 Reviews)</small>
-                </div>
+                
 
                 <h3 class="font-weight-semi-bold mb-4">
               $@Html.DisplayFor(model => model.Precio)
@@ -52,24 +43,19 @@
                          @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(Model.codigo_proveedor)
                     </form>
                 </div>
+
                 <div class="d-flex align-items-center mb-4 pt-2">
-                    <div class="input-group quantity mr-3" style="width: 130px;">
+                    <div class="input-group quantity mr-3" style="width: 175px;">
                         <div class="input-group-btn">
                             <button class="btn btn-primary btn-minus" >
-                            <i class="fa fa-minus"></i>
+                              <i class="fa fa-shopping-basket"></i> Stock
                             </button>
                         </div>
                         
-                        <input type="text" class="form-control bg-secondary text-center" value="@Html.DisplayFor(model => model.stock)" />
+                        <input type="text" class="form-control bg-secondary text-center" value="@Html.DisplayFor(model => model.stock)" disabled/>
 
 
-                        <div class="input-group-btn">
-                            <button class="btn btn-primary btn-plus">
-                                <i class="fa fa-plus"></i>
-                            </button>
-                        </div>
                     </div>
-                    <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Agregar al Carrito</button>
                 </div>
                 
                 <div class="d-flex pt-2">
@@ -116,22 +102,6 @@
                                   </ul> 
                             </div>
 
-                            <div class="col-md-6">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item px-0">
-                                        Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                                    </li>
-                                    <li class="list-group-item px-0">
-                                        Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                                    </li>
-                                  </ul> 
-                            </div>
                         </div>
                     </div>
                 </div>

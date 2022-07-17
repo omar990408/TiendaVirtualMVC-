@@ -170,7 +170,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -185,57 +184,60 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUser.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserClaim.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetUserLogin.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cliente.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClienteCE.cs" />
     <Compile Include="Models\C__MigrationHistory.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Pedido.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PedidoCE.cs" />
     <Compile Include="Models\PedidosItem.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PedidosItemCE.cs" />
     <Compile Include="Models\Producto.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProductoCE.cs" />
     <Compile Include="Models\ProductoDAO.cs" />
     <Compile Include="Models\Proveedor.cs">
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProveedorCE.cs" />
-    <Compile Include="Models\TiendaDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TiendaDB.Context.tt</DependentUpon>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>TiendaContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TiendaDB.cs">
+    <Compile Include="Models\TiendaContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TiendaDB.tt</DependentUpon>
+      <DependentUpon>TiendaContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TiendaDB.Designer.cs">
+    <Compile Include="Models\TiendaContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TiendaDB.edmx</DependentUpon>
+      <DependentUpon>TiendaContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TiendaContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TiendaContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -245,6 +247,7 @@
   <ItemGroup>
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\style.min.css" />
+    <Content Include="Content\css\style5.css" />
     <Content Include="Content\img\carousel-1.jpg" />
     <Content Include="Content\img\carousel-2.jpg" />
     <Content Include="Content\img\cat-1.jpg" />
@@ -390,10 +393,6 @@
     <Content Include="Content\scss\bootstrap\scss\_utilities.scss" />
     <Content Include="Content\scss\bootstrap\scss\_variables.scss" />
     <Content Include="Content\scss\style.scss" />
-    <EntityDeploy Include="Models\TiendaDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TiendaDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Image\28ad2c36-761e-4abe-b42c-efad16450f59.jfif" />
     <Content Include="Image\66717bdf-4827-427c-bf92-f0715d514b6c.jpg" />
     <Content Include="Image\93fdd4c9-f1eb-4b3c-ad79-bdcb25b73d07.png" />
@@ -402,20 +401,36 @@
     <Content Include="Image\cf41da77-207f-43eb-8496-83323e457a8c.jpg" />
     <Content Include="Image\ddbfd3a8-090d-47ec-a78c-04ab9bb77071.png" />
     <Content Include="Image\e0668329-92d2-4d49-8b81-b32c7af4c475.png" />
-    <Content Include="Models\TiendaDB.edmx.diagram">
-      <DependentUpon>TiendaDB.edmx</DependentUpon>
+    <EntityDeploy Include="Models\TiendaContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TiendaContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TiendaContext.edmx.diagram">
+      <DependentUpon>TiendaContext.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\TiendaVirtualMVC20220710221707 - Web Deploy.pubxml" />
-    <Content Include="Models\TiendaDB.Context.tt">
+    <Content Include="Models\TiendaContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TiendaDB.edmx</DependentUpon>
-      <LastGenOutput>TiendaDB.Context.cs</LastGenOutput>
+      <DependentUpon>TiendaContext.edmx</DependentUpon>
+      <LastGenOutput>TiendaContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\TiendaDB.tt">
+    <Content Include="Models\TiendaContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TiendaDB.edmx</DependentUpon>
-      <LastGenOutput>TiendaDB.cs</LastGenOutput>
+      <DependentUpon>TiendaContext.edmx</DependentUpon>
+      <LastGenOutput>TiendaContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\js\addons\datatables-select.js" />
     <Content Include="Scripts\js\addons\datatables-select.min.js" />
     <Content Include="Scripts\js\addons\datatables.js" />
@@ -446,6 +461,7 @@
     <Content Include="Scripts\js\modules\waves.js" />
     <Content Include="Scripts\js\modules\wow.js" />
     <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -504,7 +520,6 @@
     <Content Include="Views\PedidosItem\ListarPedidos.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Shared\_Products.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
     <Content Include="Views\Shared\_Topbar.cshtml" />
@@ -515,11 +530,13 @@
     <Content Include="Views\Proveedor\Editar.cshtml" />
     <Content Include="Views\Proveedor\Index.cshtml" />
     <Content Include="Views\Shared\_ShoppingCart.cshtml" />
-    <Content Include="Views\Shopping\Index.cshtml" />
-    <Content Include="Views\Shopping\ShoppingCart.cshtml" />
     <Content Include="Views\Producto\SearchForm.cshtml" />
     <Content Include="Views\Producto\ListarProveedor.cshtml" />
-    <Content Include="Views\Producto\Detalles - Copy.cshtml" />
+    <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\PedidosItem\VerAllPedidos.cshtml" />
+    <Content Include="Views\PedidosItem\DetalleTotal.cshtml" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

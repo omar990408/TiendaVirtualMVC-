@@ -7,7 +7,6 @@
 
 <h2>Detalles</h2>
 
-<div class="container">
 <div>
     <h4>PedidosItem</h4>
     <hr />
@@ -35,6 +34,13 @@
 
         <dd>
             @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(Model.ProductoID)
+        </dd>
+
+        <dt>
+            Imagen
+        </dt>
+        <dd>
+            <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(Model.ProductoID))" alt="Producto" width="250" />
             @*@Html.DisplayFor(model => model.ProductoID)*@
         </dd>
 
@@ -52,4 +58,3 @@
     @Html.ActionLink("Edit", "Editar", new { id = Model.PedidoItemID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>
-    </div>

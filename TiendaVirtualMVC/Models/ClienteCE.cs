@@ -37,7 +37,7 @@ namespace TiendaVirtualMVC.Models
     [MetadataType(typeof(ClienteCE))]
     public partial class Cliente
     {
-        public string Pais_CodPostal { get { return Convertir(); } }
+        public string Pais_CodPostal { get { return this.Convertir(); } }
 
         public string Estado_CodPostal { get { return Estado + " " + CodigoPostal; } }
 
@@ -47,16 +47,10 @@ namespace TiendaVirtualMVC.Models
         // RESULTADO = EC171503
         public string Convertir()
         {
-            if (CodigoPostal != null)
-            {
-                var pais = Pais.Substring(0, 2);
-                pais = pais.ToUpper();
-                var codigoPostal = CodigoPostal;
-                return (pais + "" + codigoPostal);
-            }
-            else
-                return "";
-
+            var pais = this.Pais.Substring(0, 2);
+            pais = pais.ToUpper();
+            var codigoPostal = this.CodigoPostal;
+            return (pais + "" + codigoPostal);
         }
     }
 

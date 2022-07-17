@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace TiendaVirtualMVC.Controllers
 {
-    public class TiendaController : Controller
+    public class CarritoController : Controller
     {
-        // GET: Tienda
+        // GET: Carrito
         public ActionResult Index()
         {
             return View();

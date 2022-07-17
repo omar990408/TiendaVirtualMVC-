@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +7,7 @@ using TiendaVirtualMVC.Models;
 
 namespace TiendaVirtualMVC.Controllers
 {
+    [Authorize]
     public class ProveedorController : Controller
     {
         // GET: Proveedor

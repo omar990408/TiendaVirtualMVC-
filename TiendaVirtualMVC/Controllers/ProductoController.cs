@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using TiendaVirtualMVC.Models;
 
 namespace TiendaVirtualMVC.Controllers
 {
+    [Authorize]
     public class ProductoController : Controller
     {
         // GET: Producto
@@ -14,7 +16,7 @@ namespace TiendaVirtualMVC.Controllers
         {
             try
             {
-                using (var db = new TiendaContext())
+                using(var db = new TiendaContext())
                 {
                     List<Producto> lista = db.Productos.ToList();
                     return View(lista);
@@ -22,16 +24,15 @@ namespace TiendaVirtualMVC.Controllers
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
 
-        [HttpGet]
         public ActionResult Agregar()
         {
             return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -64,11 +65,11 @@ namespace TiendaVirtualMVC.Controllers
             }
         }
 
-        public ActionResult Editar(int id)
+        public ActionResult Editar (int id)
         {
             try
             {
-                using (var db = new TiendaContext())
+                using(var db = new TiendaContext())
                 {
                     Producto producto = db.Productos.Find(id);
                     return View(producto);
@@ -76,6 +77,7 @@ namespace TiendaVirtualMVC.Controllers
             }
             catch (Exception)
             {
+
                 throw;
             }
         }
@@ -102,7 +104,6 @@ namespace TiendaVirtualMVC.Controllers
                     productodb.Descripcion = producto.Descripcion;
                     productodb.Precio = producto.Precio;
                     productodb.Imagen = producto.Imagen;
-                    productodb.Detalles = producto.Detalles;
                     productodb.codigo_proveedor = producto.codigo_proveedor;
                     productodb.stock = producto.stock;
                     ModelState.Clear();
@@ -119,7 +120,7 @@ namespace TiendaVirtualMVC.Controllers
 
         public ActionResult Detalles(int id)
         {
-            using (var db = new TiendaContext())
+            using(var db = new TiendaContext())
             {
                 Producto producto = db.Productos.Find(id);
                 return View(producto);
@@ -136,7 +137,6 @@ namespace TiendaVirtualMVC.Controllers
                 return RedirectToAction("Index");
             }
         }
-
 
         public ActionResult ListarProveedor()
         {
@@ -161,26 +161,15 @@ namespace TiendaVirtualMVC.Controllers
                 return db.Proveedors.Find(proveedorID).nombre_proveedor;
             }
         }
-        
-        /*
-        public ActionResult SearchForName(string searchPhrase)
+
+        public static string OnlyImage(int? productID)
         {
-            // Obtener una lista de resultados de la base de datos
-
-            try
+            using (var db = new TiendaContext())
             {
-                using (var db = new TiendaContext())
-                {
-                    List<ProductoCE> searchResults = ProductoCE.SearchForName(searchPhrase);
-
-                }
+                return db.Productos.Find(productID).Imagen;
             }
-            catch(Exception ex)
-            {
-
-            }
-
         }
-        */
+
+
     }
 }

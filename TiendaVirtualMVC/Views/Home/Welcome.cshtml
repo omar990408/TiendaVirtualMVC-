@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Index1";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!--- FONTS START-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Fonts END -->
+    <style>
+
+        #customers {
+            font-family: 'Lato', sans-serif;
+            border-collapse: collapse;
+            width: 90%;
+            margin: 30px;
+        }
+
+            #customers td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #customers tr:nth-child(even) {
+                background-color: #edf1ff;
+            }
+
+            #customers tr:hover {
+                background-color: #ddd;
+            }
+
+            #customers th {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                text-align: left;
+                background-color: #d19c97;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 410px;">
+                <img class="img-fluid" src="https://www.fotosparafacebook.es/wp-content/uploads/2019/02/portadas-de-compra-venta-Fotosparafacebook.es-7.jpg " alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 700px;">
+                        <h4 class="text-light text-uppercase font-weight-medium mb-3">Bienvenido </h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">Tienda Virtual MVC5</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item" style="height: 410px;">
+                <img class="img-fluid" src="https://www.jdmedia.co.za/images/carousel/Ecommerce-Banner-1920.jpg" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 700px;">
+
+                        <h4 class="text-light text-uppercase font-weight-medium mb-3">Bienvenido </h4>
+                        <h3 class="display-4 text-white font-weight-semi-bold mb-4">Tienda Virtual MVC5</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+
+    <center>
+        <table id="customers">
+            <tr>
+                <th style="text-align:center">MATERIA</th>
+                <td style="text-align:center"><b>Desarrollo Web para la Integración</b></td>
+            </tr>
+
+            <tr>
+                <th style="text-align:center">NRC</th>
+                <td style="text-align:center"> <b>4651</b></td>
+            </tr>
+            <tr>
+                <th style="text-align:center">
+                    PERÍODO ACADÉMICO
+                </th>
+                <td style="text-align:center"><b>Mayo-Septiembre de 2022</b></td>
+            </tr>
+            <tr>
+                <th style="text-align:center">INTEGRANTES</th>
+                <td style="text-align:center">
+                    <b>
+                        González Omar<br />
+                        Morejón Elizabeth<br />
+                        Noboa Andrés
+                    </b>
+                </td>
+            </tr>
+            <tr>
+                <th style="text-align:center">NUMERO DE GRUPO</th>
+                <td style="text-align:center"><b>GRUPO 5</b></td>
+            </tr>
+
+        </table>
+    </center>
+
+    <!-- Featured Start -->
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Productos de Calidad</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Envío Gratis</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fas fa-exchange-alt text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Retornos de 14 días</h5>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
+                    <h1 class="fa fa-phone-volume text-primary m-0 mr-3"></h1>
+                    <h5 class="font-weight-semi-bold m-0">Soporte 24/7 </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Featured End -->
+
+</body>
+</html>

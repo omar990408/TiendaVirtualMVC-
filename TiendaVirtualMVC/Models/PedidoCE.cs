@@ -12,18 +12,8 @@ namespace TiendaVirtualMVC.Models
         [Display(Name = "Ingrese el Cliente:")]
         public Nullable<int> ClienteID { get; set; }
 
-        [Required]
-        [Display(Name = "Ingrese los detalles:")]
-        public string Detalles { get; set; }
-        [Required]
-        [Display(Name = "Ingrese el proveedor:")]
-        public int codigo_proveedor { get; set; }
-        [Required]
-        [Display(Name = "Ingrese el stock:")]
-        public int stock { get; set; }
-
-        public HttpPostedFileBase ImageFile { get; set; }
     }
+
     [MetadataType(typeof(PedidoCE))]
     public partial class Pedido
     {
