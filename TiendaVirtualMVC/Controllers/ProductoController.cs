@@ -162,6 +162,13 @@ namespace TiendaVirtualMVC.Controllers
             }
         }
 
+        public static string OnlyImage(int? productID)
+        {
+            using (var db = new TiendaContext())
+            {
+                return db.Productos.Find(productID).Imagen;
+            }
+        }
 
 
     }

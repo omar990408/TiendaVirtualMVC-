@@ -66,3 +66,13 @@
     @Html.ActionLink("Editar", "Editar", new { id = Model.ProductoID }) |
     @Html.ActionLink("Regresar", "Index")
 </p>
+
+@section Scripts {
+    <script>
+        let value = @Model.stock
+        console.log(value)
+        if (value < 1) {
+            alert("Sin Stock")
+        }
+    </script>
+}

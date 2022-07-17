@@ -20,18 +20,18 @@
         <th>
             Nombre del Producto
         </th>
-        <th>
+        @*<th>
             Descripción
-        </th>
+        </th>*@
         <th>
             Precio
         </th>
         <th>
             Imagen
         </th>
-        <th>
+        @*<th>
             Proveedor
-        </th>
+        </th>*@
         <th>
             Stock
         </th>
@@ -44,19 +44,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.NombreProducto)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Precio)
             </td>
             <td>
                 <img src="@Url.Content(item.Imagen)" alt="Producto" height="200" />
-                @*@Html.DisplayFor(modelItem => item.Imagen)*@
             </td>
-            <td>
+            @*<td>
                 @TiendaVirtualMVC.Controllers.ProductoController.NombreProveedor(item.codigo_proveedor)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.stock)
             </td>

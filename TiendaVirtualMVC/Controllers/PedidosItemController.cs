@@ -17,14 +17,33 @@ namespace TiendaVirtualMVC.Controllers
             {
                 using(var db = new TiendaContext())
                 {
-                    List<PedidosItem> lista = db.PedidosItems.ToList();
-                    return View(lista);
+                    if (Session["PedidoId"] == null)
+                    {
+                        List<PedidosItem> var = db.PedidosItems.Where(a => a.PedidoItemID == -1).ToList();
+                        return View(var);
+                    }
+                    else
+                    {
+                        var pedidoID = (int)Session["PedidoId"];
+                        List<PedidosItem> lista = db.PedidosItems.Where(a => a.PedidoID == pedidoID).ToList();
+                        return View(lista);
+                    }
+
                 }
             }
             catch (Exception)
             {
 
                 throw;
+            }
+        }
+
+        public ActionResult VerAllPedidos()
+        {
+            using (var db = new TiendaContext())
+            {
+                List<PedidosItem> lista = db.PedidosItems.ToList();
+                return View(lista);
             }
         }
 
@@ -173,6 +192,39 @@ namespace TiendaVirtualMVC.Controllers
             using(var db = new TiendaContext())
             {
                 return db.Pedidos.Find(pedidoID).ClienteID.Value;
+            }
+        }
+
+        public static decimal PrecioProducto(int pedidoID)
+        {
+            using (var db = new TiendaContext())
+            {
+                return db.Productos.Find(pedidoID).Precio;
+            }
+        }
+
+        public ActionResult DetalleTotal()
+        {
+            using (var db = new TiendaContext())
+            {
+
+                Session["PedidoId"] = null;
+                return View();
+
+            }
+        }
+
+        public ActionResult Cancelar()
+        {
+            using (var db = new TiendaContext())
+            {
+
+                Pedido pedido= db.Pedidos.Find(Session["PedidoId"]);
+                db.Pedidos.Remove(pedido);
+                db.SaveChanges();
+                Session["PedidoId"] = null;
+                return RedirectToAction("Index","Home");
+
             }
         }
 

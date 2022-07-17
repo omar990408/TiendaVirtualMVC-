@@ -45,7 +45,8 @@ namespace TiendaVirtualMVC.Controllers
                     pedido.FechaPedido = DateTime.Now;
                     db.Pedidos.Add(pedido);
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    Session["PedidoId"] = pedido.PedidoID;
+                    return RedirectToAction("Agregar", "PedidosItem");
                 }
             }
             catch (Exception e)

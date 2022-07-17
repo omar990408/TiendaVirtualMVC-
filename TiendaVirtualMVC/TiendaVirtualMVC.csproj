@@ -248,10 +248,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\camisetaRM224407868.jpg" />
+    <Content Include="Image\Enfermera Uniforme224633905.jpg" />
     <Content Include="Image\gorra225008537.png" />
     <Content Include="Image\hoodie224032602.jpg" />
     <Content Include="Image\jean224123859.jpg" />
     <Content Include="Image\red-jean224200733.jpg" />
+    <Content Include="Image\Zapatilla221419289.png" />
     <Content Include="Models\ModelTienda.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelTienda.edmx</DependentUpon>
@@ -344,6 +346,8 @@
     <Content Include="Views\Producto\ListarProveedor.cshtml" />
     <Content Include="Views\Producto\Editar.cshtml" />
     <Content Include="Views\Producto\Detalles.cshtml" />
+    <Content Include="Views\PedidosItem\DetalleTotal.cshtml" />
+    <Content Include="Views\PedidosItem\VerAllPedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

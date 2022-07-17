@@ -4,7 +4,9 @@
 
     @foreach (var item in Model)
     {
-        <option value="@item.PedidoID">@TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(item.ClienteID)</option>
+        @*<option value="@item.PedidoID">@TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(item.ClienteID)</option>*@
+        <option value="@item.PedidoID">@item.PedidoID</option>
 
     }
 </select>
+

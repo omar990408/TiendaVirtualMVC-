@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TiendaVirtualMVC.Models.PedidosItem>
+
+@{
+    ViewBag.Title = "Pedidos - Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mis Pedidos</h2>
+
+@{
+    if (User.IsInRole("Cliente"))
+    {
+
+        <table class="table">
+            <tr>
+                @*<th>
+            @Html.DisplayNameFor(model => model.PedidoItemID)
+        </th>*@
+                <th>
+                    Codigo Pedido
+                </th>
+                <th>
+                    Pedido
+                </th>
+                <th>
+                    Producto
+                </th>
+                <th>
+                    Imagen
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                @*<td>
+            @Html.DisplayFor(modelItem => item.PedidoItemID)
+        </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.PedidoID)
+                </td>
+                <td>
+                    @TiendaVirtualMVC.Controllers.PedidoController.NombreCliente(TiendaVirtualMVC.Controllers.PedidosItemController.NombreRazonSocial(item.PedidoID))
+                    @*@Html.DisplayFor(modelItem => item.PedidoID)*@
+                </td>
+                <td>
+                    @TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)
+                    @*@Html.DisplayFor(modelItem => item.ProductoID)*@
+                </td>
+                <td>
+                    @*@TiendaVirtualMVC.Controllers.PedidosItemController.NombreProducto(item.ProductoID)*@
+                    <img src="@Url.Content(@TiendaVirtualMVC.Controllers.PedidosItemController.ImagenProducto(item.ProductoID))" alt="Producto" width="250" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+
+            </tr>
+            }
+
+        </table>
+
+    }
+    else
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Información
+            </div>
+            <div class="card-body">
+                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <p class="card-text">Contacte con Soporte TI o el Administrador</p>
+            </div>
+            <div class="card-footer text-muted">
+                Tienda Virtual MVC
+            </div>
+        </div>
+    }
+}
+
+
