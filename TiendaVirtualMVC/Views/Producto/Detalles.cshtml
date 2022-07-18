@@ -109,3 +109,13 @@
         </div>
     </div>
     <!-- Shop Detail End -->
+
+@section Scripts {
+    <script>
+        let value = @Model.stock
+        console.log(value)
+        if (value < 1) {
+            alert("Sin Stock")
+        }
+    </script>
+}

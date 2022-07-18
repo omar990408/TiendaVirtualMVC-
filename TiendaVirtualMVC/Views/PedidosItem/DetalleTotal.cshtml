@@ -4,5 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{ 
+    Random rd = new Random();
+    int rand_num = rd.Next(1000, 2000);
+}
 <h2>Gracias por su Compra</h2>
-
+<p>Este es su numero de factura <b>@rand_num</b> </p>

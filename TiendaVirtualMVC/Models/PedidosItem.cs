@@ -11,12 +11,15 @@ namespace TiendaVirtualMVC.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PedidosItem
     {
         public int PedidoItemID { get; set; }
         public int PedidoID { get; set; }
         public int ProductoID { get; set; }
+        
+        [Range(1, int.MaxValue, ErrorMessage = " Porfavor ingrese un valor mayor a {1}: ")]
         public int Cantidad { get; set; }
     
         public virtual Pedido Pedido { get; set; }

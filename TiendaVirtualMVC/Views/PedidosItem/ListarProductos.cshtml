@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<TiendaVirtualMVC.Models.Producto>
 
-<select class="form-control" id="ProductoID" name="ProductoID">
+<select class="form-control" id="ProductoID" name="ProductoID" onchange="showDiv('myDiv', this)">
     <option>Seleccione un Producto</option>
 
     @foreach (var item in Model)
@@ -9,14 +9,36 @@
 
     }
 </select>
+
 @foreach (var item in Model)
 {
-    <div style="float:left; margin: 0 10px 10px 0;" id="@item.ProductoID" class="myDiv" hidden>
+    <div style="margin: 0 10px 10px 0;display:none;" id="@item.ProductoID" class="myDiv" >
         <h4 class="text-center fw-semibold">@item.NombreProducto </h4>
         <img src="@Url.Content(TiendaVirtualMVC.Controllers.ProductoController.OnlyImage(item.ProductoID))" alt="Producto" height="200" /> <br>
         <p class="text-center">$ @item.Precio</p>
+        <p class="text-center"> Stock: @item.stock</p>
     </div>
 }
 
+@section scripts{
+
+    <script>
+    var select = document.getElementById('ProductoID'),
+    onChange = function(event) {
+        var shown = this.options[this.selectedIndex].value == 1;
+
+        document.getElementsByClassName('myDiv').style.display = shown ? 'block' : 'none';
+    };
+
+    if (window.addEventListener) {
+        select.addEventListener('change', onChange, false);
+    } else {
+        select.attachEvent('onchange', function() {
+            onChange.apply(select, arguments);
+        });
+    }
+        </script>
+
+} 
 
 

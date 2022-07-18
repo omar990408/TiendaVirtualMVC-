@@ -219,11 +219,20 @@ namespace TiendaVirtualMVC.Controllers
             using (var db = new TiendaContext())
             {
 
-                Pedido pedido= db.Pedidos.Find(Session["PedidoId"]);
-                db.Pedidos.Remove(pedido);
-                db.SaveChanges();
-                Session["PedidoId"] = null;
-                return RedirectToAction("Index","Home");
+                var Pedido_Id = Session["PedidoId"];
+                if (Pedido_Id != null)
+                {
+                    Pedido pedido = db.Pedidos.Find(Pedido_Id);
+                    db.Pedidos.Remove(pedido);
+                    db.SaveChanges();
+                    Session["PedidoId"] = null;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View("Index"); 
+                }
+                
 
             }
         }

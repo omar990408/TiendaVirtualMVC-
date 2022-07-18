@@ -71,11 +71,27 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Telefonos)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Editar", new { id = item.ClienteID }) |
-                @Html.ActionLink("Detalles", "Detalles", new { id = item.ClienteID }) |
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ClienteID }, new { @class = "aEliminar" })
-            </td>
+
+
+              <td>
+                    <div id="container">
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                @Html.ActionLink("Editar", "Editar", new { id = item.ClienteID }, new { @class = "btn btn-primary " })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Detalles", "Detalles", new { id = item.ClienteID }, new { @class = "btn btn-secondary" })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.ClienteID }, new { @class = "btn btn-danger aEliminar" })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </td>
+
         </tr>
     }
 

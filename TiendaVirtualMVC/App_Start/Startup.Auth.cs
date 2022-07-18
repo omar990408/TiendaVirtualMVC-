@@ -54,9 +54,9 @@ namespace TiendaVirtualMVC
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "7719856868056792",
+               appSecret: "e8b51b7a4209b10a4d8eedb53ee6bf66");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

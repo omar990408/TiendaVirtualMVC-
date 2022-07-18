@@ -39,11 +39,26 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaPedido)
                 </td>
-                <td>
-                    @Html.ActionLink("Editar", "Editar", new { id = item.PedidoID }) |
-                    @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoID }) |
-                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoID }, new { @class = "aEliminar" })
+
+              <td>
+                    <div id="container">
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                @Html.ActionLink("Editar", "Editar", new { id = item.PedidoID }, new { @class = "btn btn-primary " })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Detalles", "Detalles", new { id = item.PedidoID }, new { @class = "btn btn-secondary" })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.PedidoID }, new { @class = "btn btn-danger aEliminar" })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
                 </td>
+
             </tr>
             }
 
@@ -56,7 +71,7 @@
                 Información
             </div>
             <div class="card-body">
-                <h5 class="card-title text-danger">No tinenes Permisos para acceder</h5>
+                <h5 class="card-title text-danger">No Tienes suficientets Permisos para acceder</h5>
                 <p class="card-text">Contacte con Soporte TI o el Administrador</p>
             </div>
             <div class="card-footer text-muted">

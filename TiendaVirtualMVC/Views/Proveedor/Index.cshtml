@@ -43,11 +43,24 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.codigo_proveedor }) |
-            @Html.ActionLink("Detalles", "Detalles", new { id=item.codigo_proveedor }) |
-            @Html.ActionLink("Eliminar", "Eliminar", new {  id=item.codigo_proveedor })
-        </td>
+              <td>
+                    <div id="container">
+                        <div class="grid-container">
+                            <div class="grid-item">
+                                @Html.ActionLink("Editar", "Editar", new { id = item.codigo_proveedor }, new { @class = "btn btn-primary " })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Detalles", "Detalles", new { id = item.codigo_proveedor }, new { @class = "btn btn-secondary" })
+                            </div>
+                            <br />
+                            <div class="grid-item">
+                                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.codigo_proveedor }, new { @class = "btn btn-danger aEliminar" })
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </td>
     </tr>
 }
 
