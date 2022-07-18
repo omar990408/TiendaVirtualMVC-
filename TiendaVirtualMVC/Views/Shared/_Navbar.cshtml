@@ -19,7 +19,7 @@
                         @{
                             if (User.IsInRole("Administrador"))
                             {
-                                <a href="@Url.Action("Index", "Cliente", "Cliente")" class="nav-item nav-link"> Clientes </a>
+                                <a href="@Url.Action("Index", "Cliente", "Cliente")" class="nav-item nav-link">Clientes </a>
                                 <a href="@Url.Action("Index", "Producto", "Producto")" class="nav-item nav-link"> Productos</a>
 
                             }
@@ -30,7 +30,7 @@
                             else if (User.IsInRole("Cliente"))
                             {
                                 <a href="@Url.Action("Index", "Pedido", "Pedido")" class="nav-item nav-link"> Pedidos</a>
-                                <a href="@Url.Action("Index", "PedidosItem", "PedidosItem")" class="nav-item nav-link"> Carrito </a>
+                                <a href="@Url.Action("Index", "PedidosItem", "PedidosItem")" class="nav-item nav-link">  <i class="fas fa-shopping-cart text-primary"></i> Carrito </a>
                                 <a href="@Url.Action("Index","Producto",  "Producto")" class="nav-item nav-link"> Productos </a>
                                 <a href="@Url.Action( "VerAllPedidos","PedidosItem", "PedidosItem")" class="nav-item nav-link">Ver Pedidos </a>
                             }
